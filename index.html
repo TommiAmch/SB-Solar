@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Energy | Sombuns AB Real Estate & Solarcell </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --solar-ink: #1f2d2a;
+            --solar-forest: #315a4d;
+            --solar-sand: #eee8dc;
+            --solar-cream: #faf8f3;
+            --solar-sun: #dba54a;
+            --solar-muted: #64706b;
+        }
+
+        .investment-page {
+            background: var(--solar-cream);
+            color: var(--solar-ink);
+            font-family: "DM Sans", Arial, sans-serif;
+        }
+
+        .investment-page header {
+            position: relative;
+            box-sizing: border-box;
+            min-height: 148px;
+            padding: 18px 5vw 58px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250, 248, 243, 0.97);
+            border: 0;
+            color: var(--solar-ink);
+        }
+
+        .investment-page header h1 {
+            position: absolute;
+            top: 23px;
+            left: 50%;
+            width: min(75%, 680px);
+            margin: 0;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(1.4rem, 2.3vw, 1.85rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            text-align: center;
+            transform: translateX(-50%);
+        }
+
+        .investment-page .header-icon {
+            width: 110px;
+            opacity: 1;
+            margin: 0;
+        }
+
+        .header-menu {
+            position: absolute;
+            bottom: 17px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .header-menu ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            list-style: none;
+        }
+
+        .investment-page .header-menu ul {
+            margin: 0;
+            padding: 0;
+            gap: 8px;
+        }
+
+        .investment-page .header-menu li {
+            margin: 0;
+        }
+
+        .investment-page .header-menu ul li a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 38px;
+            padding: 0 14px;
+            background: var(--solar-sun);
+            color: #1d271f;
+            font-size: 0.7rem;
+            text-decoration: none;
+        }
+
+        .investment-page .header-menu ul li a:hover,
+        .investment-page .header-menu ul li a:focus-visible {
+            background: #c68d30;
+            color: #1d271f;
+        }
+
+        .investment-page nav ul {
+            gap: 0;
+            margin-top: 14px;
+            padding: 0;
+            background: transparent;
+        }
+
+        .investment-page nav ul li {
+            margin: 0 12px;
+        }
+
+        .investment-page nav ul li a {
+            color: var(--solar-ink);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .investment-page nav ul li a:hover,
+        .investment-page nav ul li a.active {
+            color: var(--solar-forest);
+        }
+
+        .top-contact {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 24px;
+            padding: 14px max(5vw, calc((100vw - 1080px) / 2));
+            background: var(--solar-sand);
+            color: var(--solar-ink);
+        }
+
+        .top-contact p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .top-contact strong {
+            margin-right: 10px;
+            color: var(--solar-forest);
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .top-contact__actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        .top-contact__phone,
+        .top-contact__link {
+            color: var(--solar-ink);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .top-contact__phone:hover,
+        .top-contact__link:hover {
+            color: var(--solar-forest);
+        }
+
+        .top-contact__button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 38px;
+            padding: 0 16px;
+            background: var(--solar-sun);
+            color: #1d271f;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .top-contact__button:hover {
+            background: #c68d30;
+            transform: translateY(-1px);
+        }
+
+        .solar-hero {
+            position: relative;
+            display: grid;
+            min-height: min(680px, 76vh);
+            overflow: hidden;
+            background: var(--solar-ink);
+        }
+
+        .solar-hero::after {
+            position: absolute;
+            inset: 0;
+            content: "";
+            background: linear-gradient(90deg, rgba(15, 27, 23, 0.83) 0%, rgba(15, 27, 23, 0.5) 45%, rgba(15, 27, 23, 0.08) 100%);
+        }
+
+        .solar-hero__image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 58% center;
+            opacity: 1;
+            transition: opacity 0.45s ease;
+        }
+
+        .solar-hero__image.is-fading {
+            opacity: 0;
+        }
+
+        .solar-hero__content {
+            position: relative;
+            z-index: 1;
+            align-self: end;
+            width: min(680px, 90%);
+            padding: clamp(56px, 9vw, 130px) 5vw;
+            color: white;
+        }
+
+        .eyebrow {
+            margin: 0 0 16px;
+            color: #f0c775;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .solar-hero h2,
+        .solar-section h2,
+        .solar-contact h2 {
+            margin: 0;
+            font-family: "Playfair Display", Georgia, serif;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+        }
+
+        .solar-hero h2 {
+            max-width: 660px;
+            font-size: clamp(3rem, 6.5vw, 5.8rem);
+            line-height: 0.96;
+        }
+
+        .solar-hero p:not(.eyebrow) {
+            max-width: 510px;
+            margin: 24px 0 30px;
+            font-size: clamp(1rem, 1.8vw, 1.18rem);
+            line-height: 1.65;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 24px;
+            border: 1px solid var(--solar-sun);
+            background: var(--solar-sun);
+            color: #1d271f;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+        }
+
+        .button:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .solar-section {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: clamp(66px, 10vw, 124px) 5vw;
+        }
+
+        .solar-introduction {
+            display: grid;
+            grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+            gap: clamp(30px, 8vw, 128px);
+            align-items: start;
+        }
+
+        .solar-section h2,
+        .solar-contact h2 {
+            font-size: clamp(2.2rem, 4vw, 3.7rem);
+            line-height: 1.05;
+        }
+
+        .solar-copy {
+            color: var(--solar-muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .solar-copy p:first-child {
+            margin-top: 0;
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            grid-column: 1 / -1;
+            margin-top: clamp(56px, 8vw, 96px);
+            background: #d7d6ce;
+            border: 1px solid #d7d6ce;
+        }
+
+        .benefit-card {
+            min-height: 210px;
+            padding: 31px;
+            background: var(--solar-cream);
+        }
+
+        .benefit-number {
+            display: block;
+            margin-bottom: 34px;
+            color: var(--solar-sun);
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+        }
+
+        .benefit-card h3 {
+            margin: 0 0 12px;
+            font-size: 1.1rem;
+        }
+
+        .benefit-card p {
+            margin: 0;
+            color: var(--solar-muted);
+            line-height: 1.6;
+        }
+
+        .solar-projects {
+            padding-top: 0;
+        }
+
+        .solar-projects__header {
+            display: flex;
+            justify-content: space-between;
+            gap: 32px;
+            align-items: end;
+            margin-bottom: 36px;
+        }
+
+        .solar-projects__header p:not(.eyebrow) {
+            max-width: 390px;
+            margin: 0;
+            color: var(--solar-muted);
+            line-height: 1.65;
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 18px;
+        }
+
+        .project-card {
+            margin: 0;
+            overflow: hidden;
+            background: var(--solar-sand);
+        }
+
+        .project-card img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1.18;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .project-card figcaption {
+            padding: 15px 17px 17px;
+            color: var(--solar-forest);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .solar-process {
+            background: var(--solar-sand);
+        }
+
+        .solar-process__header {
+            display: flex;
+            justify-content: space-between;
+            gap: 32px;
+            align-items: end;
+            margin-bottom: 52px;
+        }
+
+        .solar-process__header p {
+            max-width: 340px;
+            margin: 0;
+            color: var(--solar-muted);
+            line-height: 1.6;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 36px;
+            counter-reset: solar-step;
+        }
+
+        .step {
+            padding-top: 20px;
+            border-top: 1px solid rgba(31, 45, 42, 0.35);
+            counter-increment: solar-step;
+        }
+
+        .step::before {
+            display: block;
+            margin-bottom: 17px;
+            color: var(--solar-forest);
+            font-size: 0.75rem;
+            font-weight: 700;
+            content: "0" counter(solar-step);
+        }
+
+        .step h3 {
+            margin: 0 0 10px;
+            font-size: 1.1rem;
+        }
+
+        .step p {
+            margin: 0;
+            color: var(--solar-muted);
+            line-height: 1.6;
+        }
+
+        .engineer-section {
+            display: grid;
+            grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+            gap: clamp(34px, 7vw, 100px);
+            align-items: center;
+        }
+
+        .engineer-section .solar-copy {
+            margin-top: 22px;
+        }
+
+        .team-image {
+            margin: 0;
+            overflow: hidden;
+            background: var(--solar-sand);
+        }
+
+        .team-image img {
+            display: block;
+            width: 100%;
+            min-height: 390px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .language-bar {
+            display: flex;
+            grid-column: 1 / -1;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            margin-top: -52px;
+            color: var(--solar-forest);
+        }
+
+        .language-bar__label {
+            margin-right: 5px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .language-badge {
+            display: inline-flex;
+            gap: 7px;
+            align-items: center;
+            padding: 7px 11px;
+            border: 1px solid #d7d6ce;
+            background: var(--solar-cream);
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .language-badge span {
+            font-size: 1.1rem;
+        }
+
+        .engineer-interview {
+            display: grid;
+            grid-column: 1 / -1;
+            grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+            gap: clamp(34px, 7vw, 100px);
+            align-items: center;
+            margin-top: 10px;
+            padding-top: clamp(54px, 8vw, 96px);
+            border-top: 1px solid #d7d6ce;
+        }
+
+        .engineer-interview__copy p:not(.eyebrow) {
+            margin: 20px 0 0;
+            color: var(--solar-muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .engineer-interview__video {
+            display: grid;
+            width: min(100%, 480px);
+            min-height: 720px;
+            justify-self: end;
+            place-items: center;
+            padding: 40px;
+            background-color: var(--solar-ink);
+            background-image: linear-gradient(rgba(31, 45, 42, 0.46), rgba(31, 45, 42, 0.66)), url("images/profile2.JPG");
+            background-position: center, center 35%;
+            background-size: cover, cover;
+            background-repeat: no-repeat;
+            color: white;
+            text-align: center;
+        }
+
+        .engineer-interview__video .play-mark {
+            margin-bottom: 18px;
+        }
+
+        .engineer-interview__video p {
+            margin: 0;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .video-placeholder {
+            display: grid;
+            min-height: 390px;
+            place-items: center;
+            padding: 40px;
+            box-sizing: border-box;
+            background: linear-gradient(rgba(31, 45, 42, 0.35), rgba(31, 45, 42, 0.6)), url("images/Solarcell.jpg") center / cover;
+            color: white;
+            text-align: center;
+        }
+
+        .play-mark {
+            display: grid;
+            width: 62px;
+            height: 62px;
+            place-items: center;
+            margin: 0 auto 18px;
+            border: 1px solid rgba(255, 255, 255, 0.78);
+            border-radius: 50%;
+            font-size: 1.1rem;
+            padding-left: 3px;
+        }
+
+        .video-placeholder p {
+            margin: 0;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .solar-contact {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 36px;
+            align-items: end;
+            max-width: none;
+            margin: 0;
+            padding: clamp(58px, 9vw, 100px) max(5vw, calc((100vw - 1080px) / 2));
+            border: 0;
+            background: var(--solar-forest);
+            color: white;
+            text-align: left;
+        }
+
+        .solar-contact p:not(.eyebrow) {
+            max-width: 600px;
+            margin: 18px 0 0;
+            color: rgba(255, 255, 255, 0.78);
+            line-height: 1.65;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 28px;
+            margin-top: 28px;
+        }
+
+        .contact-detail {
+            display: flex;
+            flex-direction: column;
+            color: white;
+            font-size: 0.96rem;
+            font-weight: 600;
+            line-height: 1.45;
+            text-decoration: none;
+        }
+
+        a.contact-detail:hover {
+            color: #f0c775;
+        }
+
+        .contact-detail__label {
+            margin-bottom: 3px;
+            color: rgba(255, 255, 255, 0.62);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .solar-contact .button {
+            align-self: center;
+            white-space: nowrap;
+        }
+
+        .investment-page footer {
+            margin: 0;
+            padding: 22px 5vw;
+            background: var(--solar-ink);
+            color: rgba(255, 255, 255, 0.68);
+        }
+
+        @media (max-width: 760px) {
+            .investment-page header {
+                min-height: 132px;
+                padding-top: 18px;
+                padding-bottom: 48px;
+            }
+
+            .investment-page header h1 {
+                top: 18px;
+            }
+
+            .header-menu {
+                bottom: 11px;
+                width: 100%;
+            }
+
+            .investment-page .header-menu ul {
+                gap: 6px;
+            }
+
+            .investment-page .header-menu ul li a {
+                min-height: 34px;
+                padding: 0 9px;
+                font-size: 0.62rem;
+            }
+
+            .investment-page .header-icon {
+                display: none;
+            }
+
+            .top-contact {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 10px;
+                padding-top: 16px;
+                padding-bottom: 16px;
+            }
+
+            .top-contact p {
+                line-height: 1.5;
+            }
+
+            .top-contact strong {
+                display: block;
+                margin: 0 0 3px;
+            }
+
+            .top-contact__actions {
+                width: 100%;
+                margin-left: 0;
+                justify-content: space-between;
+            }
+
+            .investment-page nav ul {
+                flex-wrap: wrap;
+                row-gap: 10px;
+            }
+
+            .investment-page nav ul li {
+                margin: 0 8px;
+            }
+
+            .investment-page nav ul li a {
+                font-size: 0.68rem;
+            }
+
+            .solar-hero {
+                min-height: 620px;
+            }
+
+            .solar-hero::after {
+                background: linear-gradient(0deg, rgba(15, 27, 23, 0.84) 2%, rgba(15, 27, 23, 0.12) 90%);
+            }
+
+            .solar-hero__image {
+                object-position: 67% center;
+            }
+
+            .solar-introduction,
+            .engineer-section,
+            .engineer-interview,
+            .solar-contact {
+                grid-template-columns: 1fr;
+            }
+
+            .benefit-grid,
+            .steps,
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .benefit-card {
+                min-height: auto;
+            }
+
+            .solar-process__header {
+                display: block;
+                margin-bottom: 36px;
+            }
+
+            .solar-projects__header {
+                display: block;
+                margin-bottom: 28px;
+            }
+
+            .solar-projects__header p:not(.eyebrow) {
+                margin-top: 18px;
+            }
+
+            .solar-process__header p {
+                margin-top: 18px;
+            }
+
+            .video-placeholder {
+                min-height: 280px;
+            }
+
+            .engineer-interview__video {
+                width: 100%;
+                min-height: 0;
+                justify-self: stretch;
+                aspect-ratio: 3 / 4;
+            }
+
+            .solar-contact .button {
+                justify-self: start;
+            }
+
+            .language-bar {
+                margin-top: -14px;
+            }
+        }
+    </style>
+</head>
+<body class="investment-page">
+    <header>
+        <h1>SB Solar</h1>
+        <img src="images/sombunsap-logo-dark-gold-sbs-black.png" alt="Sombunsap Co., Ltd. logo" class="header-icon">
+        <nav class="header-menu" aria-label="Main navigation">
+            <ul>
+                <li><a href="#why-solar">Why Solar?</a></li>
+                <li><a href="#approach">Our approach</a></li>
+                <li><a href="#team">Meet our team</a></li>
+                <li><a href="#expert-insight">Expert insight</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="top-contact" aria-label="Contact SBS Solar">
+        <p>Thinking about solar for your home? Contact us.</p>
+        <div class="top-contact__actions">
+            <a class="top-contact__phone" href="tel:+66631127796">+66 63 112 7796</a>
+            <a class="top-contact__link" href="mailto:sombunsap.official@gmail.com">sombunsap.official@gmail.com</a>
+            <a class="top-contact__link" href="https://www.facebook.com/profile.php?id=61573832666420" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a class="top-contact__button" href="#contact">Contact us</a>
+        </div>
+    </section>
+
+    <main>
+        <section class="solar-hero" aria-labelledby="solar-hero-title">
+            <img class="solar-hero__image" src="images/Solarcell.jpg" alt="Solar panels on a roof in Hua Hin">
+            <div class="solar-hero__content">
+                <p class="eyebrow">Solar energy for Hua Hin homes</p>
+                <h2 id="solar-hero-title">Power your home with the sun.</h2>
+                <p>Thoughtfully designed solar solutions for homeowners who want to use clean energy and make smarter use of Thailand's sunshine.</p>
+            </div>
+        </section>
+
+        <section id="why-solar" class="solar-section solar-introduction" aria-labelledby="solar-introduction-title">
+            <div>
+                <p class="eyebrow">A practical investment</p>
+                <h2 id="solar-introduction-title">Energy that works with your home.</h2>
+            </div>
+            <div class="solar-copy">
+                <p>Solar panels turn daylight into electricity for everyday living. A well-planned system can help your home use more of its own energy while reducing reliance on the grid.</p>
+                <p>We help you understand the options, assess your property and plan a solution that feels considered from the first conversation to installation.</p>
+            </div>
+
+            <div class="benefit-grid" aria-label="Benefits of solar energy">
+                <article class="benefit-card">
+                    <span class="benefit-number">1</span>
+                    <h3>Use more of your own energy</h3>
+                    <p>Produce electricity at home during the daylight hours when solar panels are generating.</p>
+                </article>
+                <article class="benefit-card">
+                    <span class="benefit-number">2</span>
+                    <h3>Choose cleaner energy every day</h3>
+                    <p>Turn Thailand's abundant sunlight into renewable electricity and make your everyday energy use more sustainable.</p>
+                </article>
+                <article class="benefit-card">
+                    <span class="benefit-number">3</span>
+                    <h3>Protection from rising electricity prices</h3>
+                    <p>By producing part of your own electricity, you become less dependent on future increases in electricity prices.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="solar-section solar-projects" aria-labelledby="projects-title">
+            <div class="solar-projects__header">
+                <div>
+                    <p class="eyebrow">Recent work</p>
+                    <h2 id="projects-title">Installed with care.</h2>
+                </div>
+                <p>Real installations by our team, from rooftop panels to the systems that keep your home powered.</p>
+            </div>
+            <div class="project-gallery">
+                <figure class="project-card">
+                    <img src="images/IMG_5833.JPG" alt="Solar panels installed on a commercial rooftop">
+                    <figcaption>Commercial rooftop system</figcaption>
+                </figure>
+                <figure class="project-card">
+                    <img src="images/Solarcell (kopia).jpg" alt="Solar panels being installed on a home in Hua Hin">
+                    <figcaption>Residential installation</figcaption>
+                </figure>
+                <figure class="project-card">
+                    <img src="images/Working solarcell.jpg" alt="Technicians configuring a solar battery system">
+                    <figcaption>System commissioning</figcaption>
+                </figure>
+                <figure class="project-card">
+                    <img src="images/Batterisolarpt.jpg" alt="Quality-controlled solar battery system installed by the team">
+                    <figcaption>Quality-controlled products</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="approach" class="solar-process">
+            <div class="solar-section">
+                <div class="solar-process__header">
+                    <div>
+                        <p class="eyebrow">Our approach</p>
+                        <h2>A clear path to solar.</h2>
+                    </div>
+                    <p>We keep the process straightforward, so you know what to expect before work begins.</p>
+                </div>
+                <div class="steps">
+                    <article class="step">
+                        <h3>Initial conversation</h3>
+                        <p>We discuss your property, energy needs and the goals you have for your home.</p>
+                    </article>
+                    <article class="step">
+                        <h3>System planning</h3>
+                        <p>Our team reviews the site and recommends a system designed around your requirements.</p>
+                    </article>
+                    <article class="step">
+                        <h3>Installation &amp; handover</h3>
+                        <p>Once installed, we explain the system clearly so you can feel at home with your new energy setup.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="solar-section engineer-section" aria-labelledby="team-title">
+            <div>
+                <p class="eyebrow">Meet the team</p>
+                <h2 id="team-title">A team you can count on.</h2>
+                <div class="solar-copy">
+                    <p>From thoughtful planning to a precise installation, our friendly team takes pride in work that is clear, careful and built to last.</p>
+                    <p>We are here to make the move to solar feel simple, personal and positive from the first conversation.</p>
+                    <p>Our multilingual team communicates fluently in Thai, English, French and Swedish, so your questions, ideas and needs are understood clearly from the start.</p>
+                </div>
+            </div>
+            <figure class="team-image">
+                <img src="images/Team.JPG" alt="The Sombuns Solar installation team in front of a completed home solar project">
+            </figure>
+            <div class="language-bar" aria-label="Languages we speak">
+                <span class="language-bar__label">We speak</span>
+                <span class="language-badge"><span aria-hidden="true">🇹🇭</span> Thai</span>
+                <span class="language-badge"><span aria-hidden="true">🇬🇧</span> English</span>
+                <span class="language-badge"><span aria-hidden="true">🇫🇷</span> French</span>
+                <span class="language-badge"><span aria-hidden="true">🇸🇪</span> Swedish</span>
+            </div>
+            <div id="expert-insight" class="engineer-interview">
+                <div class="engineer-interview__copy">
+                    <p class="eyebrow">Expert insight</p>
+                    <h2>A conversation with our Chief Engineer.</h2>
+                    <p>Coming soon: practical advice on choosing a solar system, planning an installation and getting the most from your energy.</p>
+                </div>
+                <div class="engineer-interview__video" role="img" aria-label="Space reserved for an interview video with the Chief Engineer">
+                    <div>
+                        <span class="play-mark" aria-hidden="true">▶</span>
+                        <p>Chief Engineer interview — coming soon</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="solar-contact" aria-labelledby="solar-contact-title">
+            <div>
+                <p class="eyebrow">Start a conversation</p>
+                <h2 id="solar-contact-title">Ready to explore solar for your home?</h2>
+                <p>Get in touch to discuss your property and the possibilities for a tailored solar energy solution.</p>
+                <div class="contact-details">
+                    <a class="contact-detail" href="tel:+66631127796">
+                        <span class="contact-detail__label">Phone</span>
+                        +66 63 112 7796
+                    </a>
+                    <a class="contact-detail" href="mailto:sombunsap.official@gmail.com">
+                        <span class="contact-detail__label">Mail</span>
+                        sombunsap.official@gmail.com
+                    </a>
+                    <a class="contact-detail" href="https://www.facebook.com/profile.php?id=61573832666420" target="_blank" rel="noopener noreferrer">
+                        <span class="contact-detail__label">Facebook</span>
+                        SBSolar HuaHin
+                    </a>
+                </div>
+            </div>
+            <a class="button" href="mailto:sombunsap.official@gmail.com">Contact us</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sombuns AB. All rights reserved.</p>
+    </footer>
+    <script>
+        const heroImage = document.querySelector(".solar-hero__image");
+        const heroSlides = [
+            { src: "images/Solarcell.jpg", alt: "Solar panels on a roof in Hua Hin" },
+            { src: "images/Workingsollarcell.jpg", alt: "Solar installers working on panels on a residential roof" },
+            { src: "images/Working solarcell.jpg", alt: "Technicians configuring a solar battery system" }
+        ];
+
+        if (heroImage && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            let currentSlide = 0;
+
+            window.setInterval(() => {
+                heroImage.classList.add("is-fading");
+
+                window.setTimeout(() => {
+                    currentSlide = (currentSlide + 1) % heroSlides.length;
+                    const nextSlide = heroSlides[currentSlide];
+
+                    heroImage.addEventListener("load", () => {
+                        heroImage.classList.remove("is-fading");
+                    }, { once: true });
+                    heroImage.addEventListener("error", () => {
+                        heroImage.classList.remove("is-fading");
+                    }, { once: true });
+                    heroImage.src = nextSlide.src;
+                    heroImage.alt = nextSlide.alt;
+                }, 450);
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
