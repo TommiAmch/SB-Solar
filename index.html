@@ -57,6 +57,10 @@
             margin: 0;
         }
 
+        .menu-toggle {
+            display: none;
+        }
+
         .header-menu {
             position: absolute;
             bottom: 17px;
@@ -649,44 +653,84 @@
 
         @media (max-width: 760px) {
             .investment-page header {
-                min-height: 132px;
-                padding-top: 18px;
-                padding-bottom: 48px;
+                min-height: 82px;
+                padding: 18px 5vw;
             }
 
             .investment-page header h1 {
-                top: 18px;
+                top: 23px;
+                left: 5vw;
+                width: auto;
+                font-size: 1.5rem;
+                text-align: left;
+                transform: none;
             }
 
             .header-menu {
-                bottom: 11px;
+                display: none;
+                top: 100%;
+                bottom: auto;
+                left: 0;
                 width: 100%;
+                box-sizing: border-box;
+                padding: 12px 5vw 18px;
+                border-top: 1px solid #d7d6ce;
+                background: var(--solar-cream);
+                transform: none;
+                z-index: 10;
+            }
+
+            .header-menu.is-open {
+                display: block;
             }
 
             .investment-page .header-menu ul {
-                gap: 6px;
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 8px;
             }
 
             .investment-page .header-menu ul li a {
-                min-height: 34px;
-                padding: 0 9px;
-                font-size: 0.62rem;
+                width: 100%;
+                min-height: 48px;
+                padding: 0 16px;
+                font-size: 0.72rem;
             }
 
             .investment-page .header-icon {
                 display: none;
             }
 
-            .top-contact {
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 10px;
-                padding-top: 16px;
-                padding-bottom: 16px;
+            .menu-toggle {
+                position: absolute;
+                top: 16px;
+                right: 5vw;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                min-height: 44px;
+                padding: 0 12px;
+                border: 1px solid var(--solar-ink);
+                background: transparent;
+                color: var(--solar-ink);
+                font: inherit;
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
             }
 
-            .top-contact p {
-                line-height: 1.5;
+            .top-contact {
+                align-items: center;
+                flex-direction: row;
+                gap: 0;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .top-contact p,
+            .top-contact__link {
+                display: none;
             }
 
             .top-contact strong {
@@ -698,6 +742,14 @@
                 width: 100%;
                 margin-left: 0;
                 justify-content: space-between;
+            }
+
+            .top-contact__phone {
+                font-size: 0.85rem;
+            }
+
+            .top-contact__button {
+                min-height: 44px;
             }
 
             .investment-page nav ul {
@@ -784,8 +836,11 @@
 <body class="investment-page">
     <header>
         <h1>SB Solar</h1>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-menu">
+            <span>Menu</span><span aria-hidden="true">☰</span>
+        </button>
         <img src="images/sombunsap-logo-dark-gold-sbs-black.png" alt="Sombunsap Co., Ltd. logo" class="header-icon">
-        <nav class="header-menu" aria-label="Main navigation">
+        <nav id="main-menu" class="header-menu" aria-label="Main navigation">
             <ul>
                 <li><a href="#why-solar">Why Solar?</a></li>
                 <li><a href="#approach">Our approach</a></li>
@@ -988,6 +1043,25 @@
                     heroImage.alt = nextSlide.alt;
                 }, 450);
             }, 5000);
+        }
+
+        const menuToggle = document.querySelector(".menu-toggle");
+        const headerMenu = document.querySelector(".header-menu");
+
+        if (menuToggle && headerMenu) {
+            menuToggle.addEventListener("click", () => {
+                const isOpen = headerMenu.classList.toggle("is-open");
+                menuToggle.setAttribute("aria-expanded", String(isOpen));
+                menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+            });
+
+            headerMenu.querySelectorAll("a").forEach((link) => {
+                link.addEventListener("click", () => {
+                    headerMenu.classList.remove("is-open");
+                    menuToggle.setAttribute("aria-expanded", "false");
+                    menuToggle.setAttribute("aria-label", "Open menu");
+                });
+            });
         }
     </script>
 </body>
