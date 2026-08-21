@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>SBS Solar</title>
+  <rect width="64" height="64" rx="12" fill="#b7832b"/>
+  <path fill="#1d271f" d="M5 33 29 13l15 11v17L29 30 5 45Zm34-18 20 13v17L39 33Zm13-7h7v15l-7-5Z"/>
+</svg>
