@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solar Panels &amp; Installation in Hua Hin | SBS Solar</title>
-    <meta name="description" content="SBS Solar designs and installs solar panel systems for homes in Hua Hin. Get clear local advice from our Thai, English, French and Swedish-speaking team.">
+    <title>Reliable Solar Panel Installation in Hua Hin | SBS Solar</title>
+    <meta name="description" content="Reliable solar panel installation for homes in Hua Hin. SBS Solar brings 12 years of local experience. Call +66 63 112 7796 for a consultation.">
     <link rel="canonical" href="https://sbsolarservice.com/">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <script type="application/ld+json">
@@ -17,6 +17,25 @@
             "description": "SBS Solar designs and installs solar panel systems for homes in Hua Hin, Thailand.",
             "telephone": "+66631127796",
             "email": "sombunsap.official@gmail.com",
+            "openingHoursSpecification": [
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday"
+                    ],
+                    "opens": "08:00",
+                    "closes": "17:00"
+                },
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": "Friday",
+                    "opens": "08:00",
+                    "closes": "14:30"
+                }
+            ],
             "areaServed": {
                 "@type": "City",
                 "name": "Hua Hin",
@@ -27,7 +46,12 @@
             },
             "serviceType": [
                 "Solar panel installation",
-                "Home solar energy systems"
+                "Solar battery installation",
+                "Solar inverter installation",
+                "Home solar energy systems",
+                "Solar panel maintenance",
+                "Solar system maintenance",
+                "Solar consultations and free quotes"
             ],
             "sameAs": [
                 "https://www.facebook.com/profile.php?id=61573832666420"
@@ -77,12 +101,13 @@
             color: var(--solar-ink);
         }
 
-        .investment-page header h1 {
+        .investment-page .site-name {
             position: absolute;
             top: 23px;
             left: 50%;
             width: min(75%, 680px);
             margin: 0;
+            color: var(--solar-ink);
             font-family: "Playfair Display", Georgia, serif;
             font-size: clamp(1.4rem, 2.3vw, 1.85rem);
             font-weight: 600;
@@ -211,6 +236,29 @@
             color: var(--solar-forest);
         }
 
+        .top-contact__facebook {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #1877f2;
+            color: #fff;
+        }
+
+        .top-contact__facebook:hover,
+        .top-contact__facebook:focus-visible {
+            background: #0f61c9;
+            color: #fff;
+        }
+
+        .top-contact__facebook svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+
         .top-contact__button {
             display: inline-flex;
             align-items: center;
@@ -280,7 +328,7 @@
             text-transform: uppercase;
         }
 
-        .solar-hero h2,
+        .solar-hero h1,
         .solar-section h2,
         .solar-contact h2 {
             margin: 0;
@@ -289,7 +337,7 @@
             letter-spacing: -0.04em;
         }
 
-        .solar-hero h2 {
+        .solar-hero h1 {
             max-width: 660px;
             font-size: clamp(3rem, 6.5vw, 5.8rem);
             line-height: 0.96;
@@ -353,6 +401,22 @@
             margin-top: 0;
         }
 
+        .local-experience {
+            display: inline-block;
+            margin: 26px 0 0;
+            padding: 9px 12px;
+            border-left: 3px solid var(--solar-sun);
+            background: var(--solar-sand);
+            color: var(--solar-ink);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .local-experience + .local-experience {
+            margin-top: 8px;
+        }
+
         .benefit-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -387,6 +451,488 @@
             margin: 0;
             color: var(--solar-muted);
             line-height: 1.6;
+        }
+
+        .solar-estimator {
+            display: grid;
+            grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+            gap: clamp(36px, 8vw, 118px);
+            align-items: start;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: clamp(66px, 10vw, 124px) 5vw;
+            border-top: 1px solid #d7d6ce;
+        }
+
+        .solar-estimator__intro h2 {
+            margin: 0;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(2.2rem, 4vw, 3.7rem);
+            font-weight: 500;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+        }
+
+        .solar-estimator__intro > p:not(.eyebrow) {
+            margin: 22px 0 0;
+            color: var(--solar-muted);
+            line-height: 1.75;
+        }
+
+        .solar-estimator__tool {
+            padding: clamp(24px, 4vw, 42px);
+            background: var(--solar-ink);
+            color: white;
+        }
+
+        .profile-picker {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            margin: 0 0 32px;
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .profile-picker__button {
+            min-height: 104px;
+            padding: 17px 13px;
+            border: 0;
+            background: rgba(255, 255, 255, 0.06);
+            color: white;
+            font: inherit;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .profile-picker__button:hover,
+        .profile-picker__button:focus-visible,
+        .profile-picker__button[aria-pressed="true"] {
+            background: rgba(219, 165, 74, 0.22);
+        }
+
+        .profile-picker__name,
+        .profile-picker__detail {
+            display: block;
+        }
+
+        .profile-picker__name {
+            color: #f0c775;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .profile-picker__detail {
+            margin-top: 8px;
+            color: rgba(255, 255, 255, 0.67);
+            font-size: 0.72rem;
+            line-height: 1.45;
+        }
+
+        .profile-picker__note {
+            margin: -16px 0 28px;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.76rem;
+            line-height: 1.5;
+        }
+
+        .season-picker__title {
+            margin: 0 0 10px;
+            color: #f0c775;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .season-picker__title strong {
+            display: block;
+            margin-top: 7px;
+            color: white;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            text-transform: none;
+        }
+
+        .season-picker {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .season-picker button {
+            min-height: 82px;
+            padding: 13px 11px;
+            border: 0;
+            background: rgba(255, 255, 255, 0.06);
+            color: white;
+            font: inherit;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .season-picker button:hover,
+        .season-picker button:focus-visible,
+        .season-picker button[aria-pressed="true"] {
+            background: rgba(219, 165, 74, 0.22);
+        }
+
+        .season-picker__name,
+        .season-picker__detail {
+            display: block;
+        }
+
+        .season-picker__name {
+            color: #f0c775;
+            font-size: 0.73rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .season-picker__detail {
+            margin-top: 7px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.7rem;
+            line-height: 1.42;
+        }
+
+        .season-picker__note {
+            margin: 12px 0 0;
+            color: rgba(255, 255, 255, 0.68);
+            font-size: 0.74rem;
+            line-height: 1.5;
+        }
+
+        .season-history {
+            margin: 10px 0 30px;
+            color: rgba(255, 255, 255, 0.74);
+            font-size: 0.74rem;
+        }
+
+        .season-history summary {
+            color: #f0c775;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .season-history p {
+            margin: 9px 0 0;
+            line-height: 1.6;
+        }
+
+        .custom-home-load {
+            margin: 0 0 28px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .custom-home-load__note {
+            margin: 11px 0 0;
+            color: rgba(255, 255, 255, 0.68);
+            font-size: 0.74rem;
+            line-height: 1.5;
+        }
+
+        .custom-home-load__suggestion {
+            margin: 10px 0 0;
+            color: #f0c775;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .solar-estimator__image {
+            position: relative;
+            height: 330px;
+            margin: -42px -42px 32px;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 18% 18%, rgba(219, 165, 74, 0.2), transparent 32%),
+                linear-gradient(135deg, #294c43, #11251f 63%, #0d1c18);
+        }
+
+        .solar-estimator__image::after {
+            position: absolute;
+            inset: 0;
+            content: "";
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 45%);
+        }
+
+        .solar-estimator__image figcaption {
+            position: absolute;
+            z-index: 2;
+            right: 28px;
+            bottom: 23px;
+            left: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .solar-estimator__image figcaption span {
+            color: #f0c775;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .solar-estimator__image figcaption strong {
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 500;
+        }
+
+        .solar-live-board {
+            position: absolute;
+            z-index: 1;
+            inset: 26px 28px 76px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-rows: 1fr 1fr;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .solar-live-stat {
+            display: grid;
+            grid-template-columns: 26px 1fr;
+            column-gap: 8px;
+            align-items: center;
+            min-width: 0;
+            padding: 11px;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            background: rgba(14, 31, 27, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .solar-live-stat--sun {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .solar-live-stat--production {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .solar-live-stat--battery {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .solar-live-stat--use {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .solar-live-stat__icon {
+            grid-row: 1 / span 2;
+            color: #f0c775;
+            font-size: 1.35rem;
+            line-height: 1;
+        }
+
+        .solar-live-stat strong {
+            overflow: hidden;
+            color: white;
+            font-size: clamp(0.9rem, 1.65vw, 1.2rem);
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .solar-live-stat > span:last-child {
+            color: rgba(255, 255, 255, 0.67);
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            line-height: 1.25;
+            text-transform: uppercase;
+        }
+
+        .solar-estimator__controls {
+            display: grid;
+            gap: 27px;
+        }
+
+        .solar-estimator__controls-title {
+            margin: 0 0 -7px;
+            color: #f0c775;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .battery-choice-set {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .battery-choice {
+            min-height: 58px;
+            border: 0;
+            background: rgba(255, 255, 255, 0.07);
+            color: rgba(255, 255, 255, 0.72);
+            font: inherit;
+            font-size: 0.7rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .battery-choice:hover,
+        .battery-choice:focus-visible,
+        .battery-choice[aria-pressed="true"] {
+            background: rgba(219, 165, 74, 0.25);
+            color: #f0c775;
+        }
+
+        .solar-estimator__label-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: baseline;
+            margin-bottom: 16px;
+        }
+
+        .solar-estimator__label-row label,
+        .solar-estimator__label-row output {
+            font-weight: 700;
+        }
+
+        .solar-estimator__label-row label {
+            font-size: 0.76rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .solar-estimator__label-row output {
+            color: #f0c775;
+            font-size: 1.2rem;
+        }
+
+        .solar-estimator input[type="range"] {
+            width: 100%;
+            height: 30px;
+            margin: 0;
+            accent-color: var(--solar-sun);
+            cursor: ew-resize;
+        }
+
+        .solar-estimator__range-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.72rem;
+        }
+
+        .solar-estimator__results {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .solar-result {
+            display: flex;
+            flex-direction: column;
+            min-height: 130px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .solar-result--primary {
+            background: rgba(219, 165, 74, 0.18);
+        }
+
+        .solar-result--coverage {
+            grid-column: 1 / -1;
+        }
+
+        .solar-result__label {
+            min-height: 31px;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            line-height: 1.35;
+            text-transform: uppercase;
+        }
+
+        .solar-result strong {
+            margin-top: auto;
+            color: #f0c775;
+            font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+            letter-spacing: -0.05em;
+            line-height: 1;
+        }
+
+        .solar-result span:last-child {
+            margin-top: 8px;
+            color: rgba(255, 255, 255, 0.63);
+            font-size: 0.7rem;
+            line-height: 1.3;
+        }
+
+        .solar-estimator__note {
+            margin: 20px 0 0;
+            color: rgba(255, 255, 255, 0.67);
+            font-size: 0.78rem;
+            line-height: 1.6;
+        }
+
+        .solar-estimator__button {
+            display: inline-flex;
+            min-height: 46px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 24px;
+            padding: 0 19px;
+            background: var(--solar-sun);
+            color: #1d271f;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .solar-estimator__button:hover,
+        .solar-estimator__button:focus-visible {
+            background: #c68d30;
+            transform: translateY(-2px);
+        }
+
+        .solar-estimator__demo-link {
+            display: inline-flex;
+            align-items: center;
+            min-height: 46px;
+            margin: 14px 0 0 14px;
+            color: #f0c775;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .solar-estimator__demo-link:hover,
+        .solar-estimator__demo-link:focus-visible {
+            color: white;
         }
 
         .solar-projects {
@@ -710,6 +1256,10 @@
                 transform: none;
             }
 
+            .investment-page .header-icon {
+                display: none;
+            }
+
             .header-menu {
                 display: none;
                 top: 100%;
@@ -739,10 +1289,6 @@
                 min-height: 48px;
                 padding: 0 16px;
                 font-size: 0.72rem;
-            }
-
-            .investment-page .header-icon {
-                display: none;
             }
 
             .menu-toggle {
@@ -822,6 +1368,7 @@
             }
 
             .solar-introduction,
+            .solar-estimator,
             .engineer-section,
             .engineer-interview,
             .solar-contact {
@@ -829,6 +1376,7 @@
             }
 
             .benefit-grid,
+            .solar-estimator__results,
             .steps,
             .project-gallery {
                 grid-template-columns: 1fr;
@@ -836,6 +1384,77 @@
 
             .benefit-card {
                 min-height: auto;
+            }
+
+            .solar-estimator__tool {
+                padding: 24px;
+            }
+
+            .profile-picker {
+                margin-bottom: 28px;
+            }
+
+            .profile-picker__button {
+                min-height: 108px;
+                padding: 13px 9px;
+            }
+
+            .solar-estimator__image {
+                height: 300px;
+                margin: -24px -24px 28px;
+            }
+
+            .solar-live-board {
+                inset: 18px 16px 63px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 7px;
+            }
+
+            .solar-live-stat {
+                grid-template-columns: 17px 1fr;
+                column-gap: 4px;
+                padding: 7px 5px;
+            }
+
+            .solar-live-stat__icon {
+                font-size: 0.95rem;
+            }
+
+            .solar-live-stat strong {
+                font-size: 0.65rem;
+            }
+
+            .solar-live-stat > span:last-child {
+                font-size: 0.46rem;
+                letter-spacing: 0.04em;
+            }
+
+            .solar-estimator__image figcaption {
+                right: 16px;
+                bottom: 14px;
+                left: 16px;
+            }
+
+            .solar-estimator__image figcaption span {
+                font-size: 0.56rem;
+            }
+
+            .solar-estimator__image figcaption strong {
+                font-size: 1rem;
+            }
+
+            .battery-choice-set {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .solar-estimator__demo-link {
+                display: flex;
+                justify-content: center;
+                margin: 10px 0 0;
+            }
+
+            .solar-result {
+                min-height: 100px;
             }
 
             .solar-process__header {
@@ -879,7 +1498,7 @@
 </head>
 <body class="investment-page">
     <header>
-        <h1>SB Solar</h1>
+        <p class="site-name">SBS Solar</p>
         <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-menu">
             <span>Menu</span><span aria-hidden="true">☰</span>
         </button>
@@ -890,6 +1509,7 @@
                 <li><a href="#approach">Our approach</a></li>
                 <li><a href="#team">Meet our team</a></li>
                 <li><a href="#expert-insight">Expert insight</a></li>
+                <li><a href="energy-flow-demo.html">Live demo</a></li>
             </ul>
         </nav>
     </header>
@@ -899,7 +1519,9 @@
         <div class="top-contact__actions">
             <a class="top-contact__phone" href="tel:+66631127796">+66 63 112 7796</a>
             <a class="top-contact__link" href="mailto:sombunsap.official@gmail.com">sombunsap.official@gmail.com</a>
-            <a class="top-contact__link" href="https://www.facebook.com/profile.php?id=61573832666420" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a class="top-contact__facebook" href="https://www.facebook.com/profile.php?id=61573832666420" target="_blank" rel="noopener noreferrer" aria-label="Visit SBS Solar on Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.3H8v3.1h2.6v8h3.1Z"/></svg>
+            </a>
             <a class="top-contact__button" href="#contact">Contact us</a>
         </div>
     </section>
@@ -909,7 +1531,7 @@
             <img class="solar-hero__image" src="images/Solarcell.jpg" alt="Solar panels on a roof in Hua Hin">
             <div class="solar-hero__content">
                 <p class="eyebrow">Solar energy for Hua Hin homes</p>
-                <h2 id="solar-hero-title">Solar panels for homes in Hua Hin.</h2>
+                <h1 id="solar-hero-title">Solar panels for homes in Hua Hin.</h1>
                 <p>SBS Solar designs and installs thoughtful solar panel systems for Hua Hin homeowners who want to use clean energy and make smarter use of Thailand's sunshine.</p>
             </div>
         </section>
@@ -922,6 +1544,10 @@
             <div class="solar-copy">
                 <p>For homes in Hua Hin, solar panels turn daylight into electricity for everyday living. A well-planned system can help your home use more of its own energy while reducing reliance on the grid.</p>
                 <p>SBS Solar helps you understand the options, assess your property and plan a home solar system that feels considered from the first conversation to installation.</p>
+                <p class="local-experience">12 years of local experience in Hua Hin.</p>
+                <p class="local-experience">10-year warranty on products and workmanship.</p>
+                <p class="local-experience">Over 100 solar systems installed in Hua Hin.</p>
+                <p class="local-experience">Our vision: complete peace of mind for every customer.</p>
             </div>
 
             <div class="benefit-grid" aria-label="Benefits of solar energy">
@@ -1050,6 +1676,14 @@
                         <span class="contact-detail__label">Facebook</span>
                         SBSolar HuaHin
                     </a>
+                    <div class="contact-detail">
+                        <span class="contact-detail__label">New customer consultations</span>
+                        <span>Monday–Thursday, 08:00–17:00<br>Friday, 08:00–14:30</span>
+                    </div>
+                    <div class="contact-detail">
+                        <span class="contact-detail__label">Existing customer support</span>
+                        <span>Available 24/7</span>
+                    </div>
                 </div>
             </div>
             <a class="button" href="mailto:sombunsap.official@gmail.com">Contact us</a>
@@ -1106,6 +1740,160 @@
                     menuToggle.setAttribute("aria-label", "Open menu");
                 });
             });
+        }
+
+        const panelCount = document.querySelector("#panel-count");
+        const panelCountOutput = document.querySelector("#panel-count-output");
+        const systemSize = document.querySelector("#system-size");
+        const dailyProduction = document.querySelector("#daily-production");
+        const annualProduction = document.querySelector("#annual-production");
+        const dailyCoverage = document.querySelector("#daily-coverage");
+        const batteryStorage = document.querySelector("#battery-storage");
+        const sunHours = document.querySelector("#sun-hours");
+        const sunHoursOutput = document.querySelector("#sun-hours-output");
+        const dailyUse = document.querySelector("#daily-use");
+        const dailyUseOutput = document.querySelector("#daily-use-output");
+        const batterySize = document.querySelector("#battery-size");
+        const batterySizeOutput = document.querySelector("#battery-size-output");
+        const batteryChoices = document.querySelectorAll("[data-battery-size]");
+        const imageSunHours = document.querySelector("#image-sun-hours");
+        const imageProduction = document.querySelector("#image-production");
+        const imageBattery = document.querySelector("#image-battery");
+        const imageCoverage = document.querySelector("#image-coverage");
+        const imageDailyUse = document.querySelector("#image-daily-use");
+        const profileButtons = document.querySelectorAll("[data-profile]");
+        const profileLabel = document.querySelector("#profile-label");
+        const profileDescription = document.querySelector("#profile-description");
+        const estimatorContact = document.querySelector("#estimator-contact");
+        const simulatorLink = document.querySelector("#simulator-link");
+        const seasonButtons = document.querySelectorAll("[data-season]");
+        const customLoadSuggestion = document.querySelector("#custom-load-suggestion");
+
+        if (panelCount && panelCountOutput && systemSize && dailyProduction && annualProduction && dailyCoverage && batteryStorage && sunHours && sunHoursOutput && dailyUse && dailyUseOutput && batterySize && batterySizeOutput && imageSunHours && imageProduction && imageBattery && imageCoverage && imageDailyUse && profileLabel && profileDescription && estimatorContact && simulatorLink) {
+            const panelWatts = 640;
+            const systemEfficiency = 0.8;
+            const numberFormat = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
+            const householdProfiles = {
+                eco: { name: "Eco", dailyUse: 18, description: "1 bedroom AC · complete household use included" },
+                comfort: { name: "Comfort", dailyUse: 28, description: "2 bedroom ACs · complete household use included" },
+                premium: { name: "Premium", dailyUse: 38, description: "3 bedroom ACs · complete household use included" }
+            };
+            let activeProfile = "comfort";
+            let isCustomHomeLoad = false;
+            const seasonalSolarAverages = {
+                clear: { sunHours: 5.9 },
+                bright: { sunHours: 6.2 },
+                showers: { sunHours: 4.6 },
+                rainy: { sunHours: 4.5 }
+            };
+            let activeSeason = "showers";
+
+            const updateProfileLabel = () => {
+                const profile = householdProfiles[activeProfile];
+                profileButtons.forEach((button) => {
+                    button.setAttribute("aria-pressed", String(button.dataset.profile === activeProfile));
+                });
+                if (profile) {
+                    profileLabel.textContent = isCustomHomeLoad ? `Suggested ${profile.name} profile` : `${profile.name} profile`;
+                    profileDescription.textContent = isCustomHomeLoad ? `Based on your ${dailyUse.value} kWh/day home load` : profile.description;
+                    customLoadSuggestion.textContent = `${isCustomHomeLoad ? "Suggested" : "Selected"} profile: ${profile.name}`;
+                } else {
+                    profileLabel.textContent = "Custom settings";
+                    profileDescription.textContent = "Adjusted to your household";
+                    customLoadSuggestion.textContent = "Custom home load";
+                }
+            };
+
+            const getSuggestedProfile = (homeLoad) => {
+                if (homeLoad <= 27) return "eco";
+                if (homeLoad <= 37) return "comfort";
+                return "premium";
+            };
+
+            const updateSeasonSelection = () => {
+                seasonButtons.forEach((button) => {
+                    button.setAttribute("aria-pressed", String(button.dataset.season === activeSeason));
+                });
+            };
+
+            const updateSolarEstimator = () => {
+                const count = Number(panelCount.value);
+                const selectedSunHours = Number(sunHours.value);
+                const selectedDailyUse = Number(dailyUse.value);
+                const selectedBatterySize = Number(batterySize.value);
+                const dailyKwh = count * (panelWatts / 1000) * selectedSunHours * systemEfficiency;
+                const annualKwh = dailyKwh * 365;
+                const systemKwp = (count * panelWatts) / 1000;
+                const coverage = (dailyKwh / selectedDailyUse) * 100;
+                const batteryLabel = selectedBatterySize === 0 ? "No battery" : `${selectedBatterySize} kWh`;
+
+                panelCountOutput.textContent = `${count} ${count === 1 ? "panel" : "panels"}`;
+                sunHoursOutput.textContent = `${selectedSunHours.toFixed(1)} hours/day`;
+                dailyUseOutput.textContent = `${selectedDailyUse} kWh/day`;
+                batterySizeOutput.textContent = batteryLabel;
+                systemSize.textContent = `${systemKwp.toFixed(1)} kWp`;
+                dailyProduction.textContent = `${dailyKwh.toFixed(1)} kWh`;
+                annualProduction.textContent = `${numberFormat.format(annualKwh)} kWh`;
+                dailyCoverage.textContent = `${Math.round(coverage)}%`;
+                batteryStorage.textContent = batteryLabel;
+                imageSunHours.textContent = selectedSunHours.toFixed(1);
+                imageProduction.textContent = `${dailyKwh.toFixed(1)} kWh`;
+                imageBattery.textContent = batteryLabel;
+                imageCoverage.textContent = `${Math.round(coverage)}%`;
+                imageDailyUse.textContent = `of ${selectedDailyUse} kWh home use`;
+                const profileText = isCustomHomeLoad ? "custom home load" : `${householdProfiles[activeProfile].name} profile`;
+                estimatorContact.href = `mailto:sombunsap.official@gmail.com?subject=${encodeURIComponent(`Solar system enquiry - ${count} ${count === 1 ? "panel" : "panels"}`)}&body=${encodeURIComponent(`Hello SBS Solar,\n\nI explored the ${profileText}: ${count} of your 640 W panels (${systemKwp.toFixed(1)} kWp), ${selectedSunHours.toFixed(1)} average sun hours, ${selectedDailyUse} kWh daily household use and ${batteryLabel.toLowerCase()}. I would like to discuss my property.\n\nThank you.`)}`;
+                const demoParameters = new URLSearchParams({ panels: String(count), battery: String(selectedBatterySize), dailyUse: String(selectedDailyUse), profile: isCustomHomeLoad ? "custom" : activeProfile, season: activeSeason || "custom", sunHours: String(selectedSunHours) });
+                simulatorLink.href = `energy-flow-demo.html?${demoParameters.toString()}`;
+
+            };
+
+            const setBatterySize = (value) => {
+                batterySize.value = value;
+                batteryChoices.forEach((button) => {
+                    button.setAttribute("aria-pressed", String(Number(button.dataset.batterySize) === Number(value)));
+                });
+                updateSolarEstimator();
+            };
+
+            const useProfile = (profileName) => {
+                const profile = householdProfiles[profileName];
+                if (!profile) return;
+                activeProfile = profileName;
+                isCustomHomeLoad = false;
+                dailyUse.value = profile.dailyUse;
+                updateProfileLabel();
+                updateSolarEstimator();
+            };
+
+            const useCustomSettings = () => {
+                isCustomHomeLoad = true;
+                activeProfile = getSuggestedProfile(Number(dailyUse.value));
+                updateProfileLabel();
+                updateSolarEstimator();
+            };
+
+            const useSeason = (seasonName) => {
+                const season = seasonalSolarAverages[seasonName];
+                if (!season) return;
+                activeSeason = seasonName;
+                sunHours.value = season.sunHours;
+                updateSeasonSelection();
+                updateSolarEstimator();
+            };
+
+            profileButtons.forEach((button) => button.addEventListener("click", () => useProfile(button.dataset.profile)));
+            panelCount.addEventListener("input", updateSolarEstimator);
+            sunHours.addEventListener("input", () => {
+                activeSeason = "custom";
+                updateSeasonSelection();
+                updateSolarEstimator();
+            });
+            dailyUse.addEventListener("input", useCustomSettings);
+            batteryChoices.forEach((button) => button.addEventListener("click", () => setBatterySize(button.dataset.batterySize)));
+            useProfile("comfort");
+            seasonButtons.forEach((button) => button.addEventListener("click", () => useSeason(button.dataset.season)));
+            useSeason("showers");
         }
     </script>
 </body>
