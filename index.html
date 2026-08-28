@@ -1513,11 +1513,12 @@
         <img src="images/sombunsap-logo-dark-gold-sbs-black.png" alt="Sombunsap Co., Ltd. logo" class="header-icon">
         <nav id="main-menu" class="header-menu" aria-label="Main navigation">
             <ul>
+                <li><a href="/" class="active" aria-current="page">Home</a></li>
                 <li><a href="#why-solar">Why Solar?</a></li>
                 <li><a href="#approach">Our approach</a></li>
                 <li><a href="#team">Meet our team</a></li>
                 <li><a href="#expert-insight">Expert insight</a></li>
-                <li><a href="energy-flow-demo.html">Live demo</a></li>
+                <li><a href="/solar-system-demo/">Solar System Demo</a></li>
             </ul>
         </nav>
     </header>
@@ -1852,7 +1853,7 @@
                 const profileText = isCustomHomeLoad ? "custom home load" : `${householdProfiles[activeProfile].name} profile`;
                 estimatorContact.href = `mailto:sombunsap.official@gmail.com?subject=${encodeURIComponent(`Solar system enquiry - ${count} ${count === 1 ? "panel" : "panels"}`)}&body=${encodeURIComponent(`Hello SBS Solar,\n\nI explored the ${profileText}: ${count} of your 640 W panels (${systemKwp.toFixed(1)} kWp), ${selectedSunHours.toFixed(1)} average sun hours, ${selectedDailyUse} kWh daily household use and ${batteryLabel.toLowerCase()}. I would like to discuss my property.\n\nThank you.`)}`;
                 const demoParameters = new URLSearchParams({ panels: String(count), battery: String(selectedBatterySize), dailyUse: String(selectedDailyUse), profile: isCustomHomeLoad ? "custom" : activeProfile, season: activeSeason || "custom", sunHours: String(selectedSunHours) });
-                simulatorLink.href = `energy-flow-demo.html?${demoParameters.toString()}`;
+                simulatorLink.href = `/solar-system-demo/?${demoParameters.toString()}`;
 
             };
 
