@@ -17,7 +17,7 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Noto+Sans+Thai:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet">
     <style>
         :root { --ink: #18322b; --deep: #10241f; --green: #315a4d; --sun: #e0b55c; --cream: #faf8f3; --mist: #e9eee9; --muted: #6d7b75; --blue: #72a7e8; }
         * { box-sizing: border-box; }
@@ -28,6 +28,10 @@
         .brand img { width: 54px; height: 38px; object-fit: contain; }
         .back-link { font-size: .73rem; font-weight: 700; letter-spacing: .1em; text-decoration: none; text-transform: uppercase; }
         .back-link:hover { color: var(--green); }
+        .language-switcher { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid #d9ddd8; background: var(--cream); }
+        .language-switcher button { min-height: 28px; padding: 0 8px; border: 0; background: transparent; color: var(--ink); cursor: pointer; font: inherit; font-size: .66rem; font-weight: 700; letter-spacing: .06em; }
+        .language-switcher button[aria-pressed="true"] { background: var(--sun); }
+        html[lang="th"] body, html[lang="th"] h1, html[lang="th"] h2, html[lang="th"] .brand, html[lang="th"] .home-load-builder__title strong, html[lang="th"] .demo-build__title strong { font-family: "Noto Sans Thai", "DM Sans", Arial, sans-serif; letter-spacing: 0; }
         main { width: min(1120px, 90vw); margin: 0 auto; padding: clamp(52px, 8vw, 90px) 0; }
         .intro { display: flex; justify-content: space-between; gap: 36px; align-items: end; margin-bottom: 42px; }
         .eyebrow { margin: 0 0 13px; color: #bd8731; font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
@@ -132,6 +136,8 @@
             .brand { gap: 7px; font-size: 1.3rem; }
             .brand img { width: 42px; height: 30px; }
             .back-link { font-size: .62rem; }
+            .language-switcher { gap: 2px; padding: 3px; }
+            .language-switcher button { min-height: 26px; padding: 0 5px; font-size: .58rem; }
             .intro { display: block; }
             .intro > p { margin-top: 22px; }
             .demo-profile-picker button { min-height: 108px; padding: 13px 9px; }
@@ -165,6 +171,10 @@
             <img src="/images/sombunsap-logo-dark-gold-sbs-black.png" alt="" aria-hidden="true">
             <span>SBS Solar</span>
         </a>
+        <div class="language-switcher" aria-label="Choose language">
+            <button type="button" data-language="en" aria-pressed="true">EN</button>
+            <button type="button" data-language="th" aria-pressed="false">ไทย</button>
+        </div>
         <a class="back-link" href="/">Home</a>
     </header>
     <main>
@@ -318,8 +328,9 @@
                 <p id="enquiry-feedback" class="system-enquiry__feedback" role="status" aria-live="polite"></p>
             </div>
         </section>
-        <p class="note">Illustrative demo only. The next step is to connect the final battery settings, panel count and validated energy rules to this view.</p>
+        <p class="note" data-demo-disclaimer>Illustrative demo based on historical data only. It is not an installation quote or a guarantee of future performance or savings.</p>
     </main>
+    <script src="/demo-language.js"></script>
     <script>
         const minutesPerStep = 10;
         const minSoc = 10;
@@ -341,10 +352,12 @@
         let demoConfig = { panels: 10, battery: 16, baseLoad: 33, dayAcCount: 1, nightAcCount: 2, sunHours: 4.6 };
         let autoPlay = null;
 
+        const demoLocale = (key, fallback, ...args) => window.demoI18n?.dynamic(key, ...args) || fallback;
+
         const gaussian = (value, centre, width) => Math.exp(-Math.pow((value - centre) / width, 2));
         const formatTime = (minute) => `${String(Math.floor(minute / 60)).padStart(2, "0")}:${String(minute % 60).padStart(2, "0")}`;
         const setLineActive = (id, isActive, gridLine = false) => document.getElementById(id).className.baseVal = isActive ? `active${gridLine ? " grid-active" : ""}` : "";
-        const formatAcCount = (count) => count === 0 ? "No AC" : `${count} ${count === 1 ? "AC" : "ACs"}`;
+        const formatAcCount = (count) => demoLocale("ac", count === 0 ? "No AC" : `${count} ${count === 1 ? "AC" : "ACs"}`, count);
         const getEstimatedHomeLoad = () => demoConfig.baseLoad + (demoConfig.dayAcCount * standardAcWatts / 1000 * daytimeAcHours) + (demoConfig.nightAcCount * standardAcWatts / 1000 * nighttimeAcHours);
 
         function buildTimeline() {
@@ -417,7 +430,7 @@
         }
 
         function syncDemoControls() {
-            const batteryLabel = demoConfig.battery === 0 ? "No battery" : `${demoConfig.battery} kWh`;
+            const batteryLabel = demoConfig.battery === 0 ? demoLocale("noBattery", "No battery") : `${demoConfig.battery} kWh`;
             document.querySelectorAll("[data-demo-battery]").forEach((button) => {
                 button.setAttribute("aria-pressed", String(Number(button.dataset.demoBattery) === demoConfig.battery));
             });
@@ -425,7 +438,7 @@
                 button.setAttribute("aria-pressed", String(button.dataset.demoSeason === activeDemoSeason));
             });
             document.getElementById("demo-panel-count").value = demoConfig.panels;
-            document.getElementById("demo-panel-count-output").textContent = `${demoConfig.panels} ${demoConfig.panels === 1 ? "panel" : "panels"}`;
+            document.getElementById("demo-panel-count-output").textContent = demoLocale("panel", `${demoConfig.panels} ${demoConfig.panels === 1 ? "panel" : "panels"}`, demoConfig.panels);
             document.getElementById("demo-base-load").value = demoConfig.baseLoad;
             document.getElementById("demo-base-load-output").textContent = `${demoConfig.baseLoad} kWh/day`;
             document.getElementById("demo-day-ac").value = demoConfig.dayAcCount;
@@ -434,8 +447,8 @@
             document.getElementById("demo-night-ac-output").textContent = formatAcCount(demoConfig.nightAcCount);
             document.getElementById("demo-total-home-load").textContent = `${getEstimatedHomeLoad().toFixed(1)} kWh/day`;
             document.getElementById("demo-battery-output").textContent = batteryLabel;
-            const summaryBatteryLabel = demoConfig.battery === 0 ? "no battery" : batteryLabel;
-            document.getElementById("system-summary").textContent = `${demoConfig.panels} × 640 W panels · ${summaryBatteryLabel}`;
+            const summaryBatteryLabel = demoConfig.battery === 0 ? demoLocale("noBattery", "no battery") : batteryLabel;
+            document.getElementById("system-summary").textContent = demoLocale("systemSummary", `${demoConfig.panels} × 640 W panels · ${summaryBatteryLabel}`, demoConfig.panels, summaryBatteryLabel);
         }
 
         function updateBuildSystem() {
@@ -446,11 +459,11 @@
         }
 
         function syncEnquirySummary() {
-            const batteryLabel = demoConfig.battery === 0 ? "No battery" : `${demoConfig.battery} kWh battery`;
-            const seasonLabel = activeDemoSeason === "custom" ? `${demoConfig.sunHours.toFixed(1)} sun hours/day` : `${activeDemoSeason} season`;
+            const batteryLabel = demoConfig.battery === 0 ? demoLocale("noBattery", "No battery") : demoLocale("battery", `${demoConfig.battery} kWh battery`, demoConfig.battery);
+            const seasonLabel = activeDemoSeason === "custom" ? demoLocale("sunHours", `${demoConfig.sunHours.toFixed(1)} sun hours/day`, demoConfig.sunHours) : demoLocale("season", `${activeDemoSeason} season`, activeDemoSeason);
             const solarPotential = document.getElementById("daily-solar").textContent;
             const homeLoad = document.getElementById("daily-load").textContent;
-            document.getElementById("enquiry-summary").textContent = `${demoConfig.panels} × 640 W panels · ${batteryLabel} · ${seasonLabel} · estimated solar potential ${solarPotential} · estimated home use ${homeLoad}`;
+            document.getElementById("enquiry-summary").textContent = demoLocale("enquirySummary", `${demoConfig.panels} × 640 W panels · ${batteryLabel} · ${seasonLabel} · estimated solar potential ${solarPotential} · estimated home use ${homeLoad}`, demoConfig.panels, batteryLabel, seasonLabel, solarPotential, homeLoad);
         }
 
         function useDemoSeason(seasonName) {
@@ -468,37 +481,37 @@
             document.getElementById("time-label").textContent = formatTime(minute);
             document.getElementById("solar-value").textContent = `${(data.solarW / 1000).toFixed(2)} kW`;
             document.getElementById("home-value").textContent = `${(data.loadW / 1000).toFixed(2)} kW`;
-            document.getElementById("battery-value").textContent = demoConfig.battery === 0 ? "No battery" : `SOC ${data.soc}%`;
+            document.getElementById("battery-value").textContent = demoConfig.battery === 0 ? demoLocale("noBattery", "No battery") : `SOC ${data.soc}%`;
             const gridImporting = data.gridW < 0;
             document.getElementById("grid-value").textContent = `${(Math.abs(data.gridW) / 1000).toFixed(2)} kW`;
-            document.getElementById("grid-status").textContent = gridImporting ? "Buying power" : "No purchase";
+            document.getElementById("grid-status").textContent = gridImporting ? demoLocale("gridBuying", "Buying power") : demoLocale("gridNone", "No purchase");
             const batteryLine = document.getElementById("line-battery");
             if (demoConfig.battery === 0) {
                 batteryLine.setAttribute("d", "M185 360 C320 360 345 275 455 250");
-                document.getElementById("battery-status").textContent = "Not installed";
+                document.getElementById("battery-status").textContent = demoLocale("batteryNotInstalled", "Not installed");
             } else if (data.batteryW > 20) {
                 batteryLine.setAttribute("d", "M455 250 C345 275 320 360 185 360");
-                document.getElementById("battery-status").textContent = data.soc >= 100 ? "Charge complete" : `Charging +${(data.batteryW / 1000).toFixed(1)} kW`;
+                document.getElementById("battery-status").textContent = data.soc >= 100 ? demoLocale("batteryChargeComplete", "Charge complete") : demoLocale("batteryCharging", `Charging +${(data.batteryW / 1000).toFixed(1)} kW`, data.batteryW / 1000);
             } else if (data.batteryW < -20) {
                 batteryLine.setAttribute("d", "M185 360 C320 360 345 275 455 250");
-                document.getElementById("battery-status").textContent = `Discharging −${Math.abs(data.batteryW / 1000).toFixed(1)} kW`;
+                document.getElementById("battery-status").textContent = demoLocale("batteryDischarging", `Discharging −${Math.abs(data.batteryW / 1000).toFixed(1)} kW`, Math.abs(data.batteryW / 1000));
             } else {
                 batteryLine.setAttribute("d", "M185 360 C320 360 345 275 455 250");
-                document.getElementById("battery-status").textContent = data.soc >= 100 ? "Full" : "Idle";
+                document.getElementById("battery-status").textContent = data.soc >= 100 ? demoLocale("batteryFull", "Full") : demoLocale("batteryIdle", "Idle");
             }
-            document.getElementById("system-status").textContent = data.curtailedW > 20 ? "Solar limited" : data.solarW > 20 ? "Producing" : "Standby";
+            document.getElementById("system-status").textContent = data.curtailedW > 20 ? demoLocale("solarLimited", "Solar limited") : data.solarW > 20 ? demoLocale("producing", "Producing") : demoLocale("standby", "Standby");
             const noGridPurchase = data.loadW > 20 && data.gridW >= -20;
             const batteryIsCharging = data.batteryW > 20;
             const batteryChargeComplete = batteryIsCharging && data.soc >= 100;
             const congratulationMessage = batteryChargeComplete
-                ? "Great news — your home is covered; battery charge is now complete"
+                ? demoLocale("chargeComplete", "Great news — your home is covered; battery charge is now complete")
                 : batteryIsCharging
-                    ? "Great news — your home is covered by solar and the battery is charging"
+                    ? demoLocale("charging", "Great news — your home is covered by solar and the battery is charging")
                     : data.curtailedW > 20
                         ? (demoConfig.battery === 0
-                            ? "Congratulations — your home demand is covered by solar"
-                            : "Congratulations — your home demand is covered and the battery is full")
-                        : "Congratulations — your home is running on your SBS Solar system";
+                            ? demoLocale("homeCoveredSolar", "Congratulations — your home demand is covered by solar")
+                            : demoLocale("homeCoveredBatteryFull", "Congratulations — your home demand is covered and the battery is full"))
+                        : demoLocale("homeRunning", "Congratulations — your home is running on your SBS Solar system");
             document.getElementById("curtailment-notice").textContent = noGridPurchase ? congratulationMessage : "";
             setLineActive("line-solar", data.solarW > 20);
             setLineActive("line-battery", Math.abs(data.batteryW) > 20);
@@ -560,48 +573,48 @@
                 return;
             }
             const formData = new FormData(form);
-            const batteryLabel = demoConfig.battery === 0 ? "No battery" : `${demoConfig.battery} kWh`;
-            const seasonLabel = activeDemoSeason === "custom" ? `${demoConfig.sunHours.toFixed(1)} sun hours/day` : `${activeDemoSeason} season`;
+            const batteryLabel = demoConfig.battery === 0 ? demoLocale("noBattery", "No battery") : `${demoConfig.battery} kWh`;
+            const seasonLabel = activeDemoSeason === "custom" ? demoLocale("sunHours", `${demoConfig.sunHours.toFixed(1)} sun hours/day`, demoConfig.sunHours) : demoLocale("season", `${activeDemoSeason} season`, activeDemoSeason);
             const enquiry = [
-                "Hello SBS Solar,",
+                demoLocale("emailGreeting", "Hello SBS Solar,"),
                 "",
-                "I would like a personal review of the solar system I built in the Flow Demo.",
+                demoLocale("emailRequest", "I would like a personal review of the solar system I built in the Flow Demo."),
                 "",
-                "CONTACT DETAILS",
-                `Name: ${formData.get("name")}`,
-                `Email: ${formData.get("email")}`,
-                `Phone: ${formData.get("phone")}`,
-                `Property area: ${formData.get("location") || "Not provided"}`,
+                demoLocale("emailContactDetails", "CONTACT DETAILS"),
+                `${demoLocale("emailName", "Name")}: ${formData.get("name")}`,
+                `${demoLocale("emailAddress", "Email")}: ${formData.get("email")}`,
+                `${demoLocale("emailPhone", "Phone")}: ${formData.get("phone")}`,
+                `${demoLocale("emailPropertyArea", "Property area")}: ${formData.get("location") || demoLocale("emailNotProvided", "Not provided")}`,
                 "",
-                "SELECTED SYSTEM",
-                `Panels: ${demoConfig.panels} × 640 W`,
-                `Battery: ${batteryLabel}`,
-                `Seasonal setting: ${seasonLabel}`,
-                `Estimated home use: ${document.getElementById("daily-load").textContent}`,
-                `Solar potential: ${document.getElementById("daily-solar").textContent}`,
-                `Estimated Grid import: ${document.getElementById("daily-grid").textContent}`,
-                `Home covered by system: ${document.getElementById("percent-system-cover").textContent}`,
+                demoLocale("emailSelectedSystem", "SELECTED SYSTEM"),
+                `${demoLocale("emailPanels", "Panels")}: ${demoConfig.panels} × 640 W`,
+                `${demoLocale("emailBattery", "Battery")}: ${batteryLabel}`,
+                `${demoLocale("emailSeason", "Seasonal setting")}: ${seasonLabel}`,
+                `${demoLocale("emailHomeUse", "Estimated home use")}: ${document.getElementById("daily-load").textContent}`,
+                `${demoLocale("emailSolarPotential", "Solar potential")}: ${document.getElementById("daily-solar").textContent}`,
+                `${demoLocale("emailGridImport", "Estimated Grid import")}: ${document.getElementById("daily-grid").textContent}`,
+                `${demoLocale("emailHomeCoverage", "Home covered by system")}: ${document.getElementById("percent-system-cover").textContent}`,
                 "",
-                `Customer note: ${formData.get("message") || "No additional note"}`
+                `${demoLocale("emailCustomerNote", "Customer note")}: ${formData.get("message") || demoLocale("emailNoAdditionalNote", "No additional note")}`
             ].join("\n");
             formData.append("access_key", "b07e30a0-987b-4e4e-94c0-5dcc7c699c5c");
-            formData.append("subject", "New SBS Solar system review request");
+            formData.append("subject", demoLocale("emailSubject", "New SBS Solar system review request"));
             formData.append("from_name", "SBS Solar website");
             formData.set("message", enquiry);
             submitButton.disabled = true;
-            submitButton.textContent = "Sending…";
-            feedback.textContent = "Sending your system details…";
+            submitButton.textContent = demoLocale("sending", "Sending…");
+            feedback.textContent = demoLocale("sendingDetails", "Sending your system details…");
             try {
                 const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
                 const result = await response.json();
                 if (!response.ok || !result.success) throw new Error(result.message || "Submission failed");
                 form.reset();
-                feedback.textContent = "Thank you — SBS Solar has received your system details and will contact you soon.";
+                feedback.textContent = demoLocale("sent", "Thank you — SBS Solar has received your system details and will contact you soon.");
             } catch (error) {
-                feedback.textContent = "We could not send your request. Please try again or email sombunsap.official@gmail.com.";
+                feedback.textContent = demoLocale("failed", "We could not send your request. Please try again or email sombunsap.official@gmail.com.");
             } finally {
                 submitButton.disabled = false;
-                submitButton.textContent = "Send my system for review";
+                submitButton.textContent = demoLocale("submit", "Send my system for review");
             }
         });
 

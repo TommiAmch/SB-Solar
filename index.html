@@ -15,7 +15,7 @@
     <meta name="description" content="Reliable solar panel installation for homes in Hua Hin. SBS Solar brings 12 years of local experience. Call +66 63 112 7796 for a consultation.">
     <link rel="canonical" href="https://sbsolarservice.com/">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <script type="application/ld+json">
+    <script id="local-business-schema" type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
@@ -66,7 +66,7 @@
             ]
         }
     </script>
-    <script type="application/ld+json">
+    <script id="website-schema" type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "WebSite",
@@ -78,7 +78,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Noto+Sans+Thai:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
         :root {
@@ -128,6 +128,47 @@
             width: 110px;
             opacity: 1;
             margin: 0;
+        }
+
+        .language-switcher {
+            position: absolute;
+            top: 22px;
+            right: 5vw;
+            display: inline-flex;
+            gap: 4px;
+            align-items: center;
+            padding: 4px;
+            border: 1px solid #d7d6ce;
+            background: var(--solar-cream);
+        }
+
+        .language-switcher__button {
+            min-height: 28px;
+            padding: 0 8px;
+            border: 0;
+            background: transparent;
+            color: var(--solar-ink);
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+        }
+
+        .language-switcher__button[aria-pressed="true"] {
+            background: var(--solar-sun);
+        }
+
+        html[lang="th"] .investment-page {
+            font-family: "Noto Sans Thai", "DM Sans", Arial, sans-serif;
+        }
+
+        html[lang="th"] .investment-page .site-name,
+        html[lang="th"] .investment-page h1,
+        html[lang="th"] .investment-page h2,
+        html[lang="th"] .investment-page h3 {
+            font-family: "Noto Sans Thai", "DM Sans", Arial, sans-serif;
+            letter-spacing: 0;
         }
 
         .menu-toggle {
@@ -1105,7 +1146,7 @@
             font-weight: 600;
         }
 
-        .language-badge span {
+        .language-badge > span[aria-hidden="true"] {
             font-size: 1.1rem;
         }
 
@@ -1266,6 +1307,17 @@
 
             .investment-page .header-icon {
                 display: none;
+            }
+
+            .language-switcher {
+                top: 23px;
+                right: calc(5vw + 112px);
+            }
+
+            .language-switcher__button {
+                min-height: 27px;
+                padding: 0 6px;
+                font-size: 0.62rem;
             }
 
             .header-menu {
@@ -1508,72 +1560,76 @@
     <header>
         <p class="site-name">SBS Solar</p>
         <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-menu">
-            <span>Menu</span><span aria-hidden="true">☰</span>
+            <span data-i18n="menu">Menu</span><span aria-hidden="true">☰</span>
         </button>
         <img src="images/sombunsap-logo-dark-gold-sbs-black.png" alt="Sombunsap Co., Ltd. logo" class="header-icon">
+        <div class="language-switcher" aria-label="Choose language" data-i18n-aria-label="languageSwitcher">
+            <button class="language-switcher__button" type="button" data-language="en" aria-pressed="true">EN</button>
+            <button class="language-switcher__button" type="button" data-language="th" aria-pressed="false">ไทย</button>
+        </div>
         <nav id="main-menu" class="header-menu" aria-label="Main navigation">
             <ul>
-                <li><a href="/" class="active" aria-current="page">Home</a></li>
-                <li><a href="#why-solar">Why Solar?</a></li>
-                <li><a href="#approach">Our approach</a></li>
-                <li><a href="#team">Meet our team</a></li>
-                <li><a href="#expert-insight">Expert insight</a></li>
-                <li><a href="/solar-system-demo/">Solar System Demo</a></li>
+                <li><a href="/" class="active" aria-current="page" data-i18n="navHome">Home</a></li>
+                <li><a href="#why-solar" data-i18n="navWhySolar">Why Solar?</a></li>
+                <li><a href="#approach" data-i18n="navApproach">Our approach</a></li>
+                <li><a href="#team" data-i18n="navTeam">Meet our team</a></li>
+                <li><a href="#expert-insight" data-i18n="navInsight">Expert insight</a></li>
+                <li><a href="/solar-system-demo/" data-i18n="navDemo">Solar System Demo</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="top-contact" aria-label="Contact SBS Solar">
-        <p>Thinking about solar for your home? Contact us.</p>
+        <p data-i18n="topContact">Thinking about solar for your home? Contact us.</p>
         <div class="top-contact__actions">
             <a class="top-contact__phone" href="tel:+66631127796">+66 63 112 7796</a>
             <a class="top-contact__link" href="mailto:sombunsap.official@gmail.com">sombunsap.official@gmail.com</a>
-            <a class="top-contact__facebook" href="https://www.facebook.com/profile.php?id=61573832666420" target="_blank" rel="noopener noreferrer" aria-label="Visit SBS Solar on Facebook">
+            <a class="top-contact__facebook" href="https://www.facebook.com/profile.php?id=61573832666420" target="_blank" rel="noopener noreferrer" aria-label="Visit SBS Solar on Facebook" data-i18n-aria-label="facebookVisit">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.3H8v3.1h2.6v8h3.1Z"/></svg>
             </a>
-            <a class="top-contact__button" href="#contact">Contact us</a>
+            <a class="top-contact__button" href="#contact" data-i18n="contactUs">Contact us</a>
         </div>
     </section>
 
     <main>
         <section class="solar-hero" aria-labelledby="solar-hero-title">
-            <img class="solar-hero__image" src="images/Solarcell.jpg" alt="Solar panels on a roof in Hua Hin">
+            <img class="solar-hero__image" src="images/Solarcell.jpg" alt="Solar panels on a roof in Hua Hin" data-i18n-alt="heroImage">
             <div class="solar-hero__content">
-                <p class="eyebrow">Solar energy for Hua Hin homes</p>
-                <h1 id="solar-hero-title">Solar panels for homes in Hua Hin.</h1>
-                <p>SBS Solar designs and installs thoughtful solar panel systems for Hua Hin homeowners who want to use clean energy and make smarter use of Thailand's sunshine.</p>
+                <p class="eyebrow" data-i18n="heroEyebrow">Solar energy for Hua Hin homes</p>
+                <h1 id="solar-hero-title" data-i18n="heroTitle">Solar panels for homes in Hua Hin.</h1>
+                <p data-i18n="heroCopy">SBS Solar designs and installs thoughtful solar panel systems for Hua Hin homeowners who want to use clean energy and make smarter use of Thailand's sunshine.</p>
             </div>
         </section>
 
         <section id="why-solar" class="solar-section solar-introduction" aria-labelledby="solar-introduction-title">
             <div>
-                <p class="eyebrow">A practical investment</p>
-                <h2 id="solar-introduction-title">Energy that works with your home.</h2>
+                <p class="eyebrow" data-i18n="introEyebrow">A practical investment</p>
+                <h2 id="solar-introduction-title" data-i18n="introTitle">Energy that works with your home.</h2>
             </div>
             <div class="solar-copy">
-                <p>For homes in Hua Hin, solar panels turn daylight into electricity for everyday living. A well-planned system can help your home use more of its own energy while reducing reliance on the grid.</p>
-                <p>SBS Solar helps you understand the options, assess your property and plan a home solar system that feels considered from the first conversation to installation.</p>
-                <p class="local-experience">12 years of local experience in Hua Hin.</p>
-                <p class="local-experience">10-year warranty on products and workmanship.</p>
-                <p class="local-experience">Over 100 solar systems installed in Hua Hin.</p>
-                <p class="local-experience">Our vision: complete peace of mind for every customer.</p>
+                <p data-i18n="introCopy1">For homes in Hua Hin, solar panels turn daylight into electricity for everyday living. A well-planned system can help your home use more of its own energy while reducing reliance on the grid.</p>
+                <p data-i18n="introCopy2">SBS Solar helps you understand the options, assess your property and plan a home solar system that feels considered from the first conversation to installation.</p>
+                <p class="local-experience" data-i18n="experienceYears">12 years of local experience in Hua Hin.</p>
+                <p class="local-experience" data-i18n="warranty">10-year warranty on products and workmanship.</p>
+                <p class="local-experience" data-i18n="installations">Over 100 solar systems installed in Hua Hin.</p>
+                <p class="local-experience" data-i18n="vision">Our vision: complete peace of mind for every customer.</p>
             </div>
 
-            <div class="benefit-grid" aria-label="Benefits of solar energy">
+            <div class="benefit-grid" aria-label="Benefits of solar energy" data-i18n-aria-label="benefitsAria">
                 <article class="benefit-card">
                     <span class="benefit-number">1</span>
-                    <h3>Use more of your own energy</h3>
-                    <p>Produce electricity at home during the daylight hours when solar panels are generating.</p>
+                    <h3 data-i18n="benefit1Title">Use more of your own energy</h3>
+                    <p data-i18n="benefit1Copy">Produce electricity at home during the daylight hours when solar panels are generating.</p>
                 </article>
                 <article class="benefit-card">
                     <span class="benefit-number">2</span>
-                    <h3>Choose cleaner energy every day</h3>
-                    <p>Turn Thailand's abundant sunlight into renewable electricity and make your everyday energy use more sustainable.</p>
+                    <h3 data-i18n="benefit2Title">Choose cleaner energy every day</h3>
+                    <p data-i18n="benefit2Copy">Turn Thailand's abundant sunlight into renewable electricity and make your everyday energy use more sustainable.</p>
                 </article>
                 <article class="benefit-card">
                     <span class="benefit-number">3</span>
-                    <h3>Protection from rising electricity prices</h3>
-                    <p>By producing part of your own electricity, you become less dependent on future increases in electricity prices.</p>
+                    <h3 data-i18n="benefit3Title">Protection from rising electricity prices</h3>
+                    <p data-i18n="benefit3Copy">By producing part of your own electricity, you become less dependent on future increases in electricity prices.</p>
                 </article>
             </div>
         </section>
@@ -1581,27 +1637,27 @@
         <section class="solar-section solar-projects" aria-labelledby="projects-title">
             <div class="solar-projects__header">
                 <div>
-                    <p class="eyebrow">Recent work</p>
-                    <h2 id="projects-title">Installed with care.</h2>
+                    <p class="eyebrow" data-i18n="projectsEyebrow">Recent work</p>
+                    <h2 id="projects-title" data-i18n="projectsTitle">Installed with care.</h2>
                 </div>
-                <p>Real solar installations by our Hua Hin team, from rooftop panels to the systems that keep your home powered.</p>
+                <p data-i18n="projectsCopy">Real solar installations by our Hua Hin team, from rooftop panels to the systems that keep your home powered.</p>
             </div>
             <div class="project-gallery">
                 <figure class="project-card">
-                    <img src="images/IMG_5833.JPG" alt="Solar panels installed on a commercial rooftop">
-                    <figcaption>Commercial rooftop system</figcaption>
+                    <img src="images/IMG_5833.JPG" alt="Solar panels installed on a commercial rooftop" data-i18n-alt="project1Alt">
+                    <figcaption data-i18n="project1Caption">Commercial rooftop system</figcaption>
                 </figure>
                 <figure class="project-card">
-                    <img src="images/Solarcell (kopia).jpg" alt="Solar panels being installed on a home in Hua Hin">
-                    <figcaption>Residential installation</figcaption>
+                    <img src="images/Solarcell (kopia).jpg" alt="Solar panels being installed on a home in Hua Hin" data-i18n-alt="project2Alt">
+                    <figcaption data-i18n="project2Caption">Residential installation</figcaption>
                 </figure>
                 <figure class="project-card">
-                    <img src="images/Working solarcell.jpg" alt="Technicians configuring a solar battery system">
-                    <figcaption>System commissioning</figcaption>
+                    <img src="images/Working solarcell.jpg" alt="Technicians configuring a solar battery system" data-i18n-alt="project3Alt">
+                    <figcaption data-i18n="project3Caption">System commissioning</figcaption>
                 </figure>
                 <figure class="project-card">
-                    <img src="images/Batterisolarpt.jpg" alt="Quality-controlled solar battery system installed by the team">
-                    <figcaption>Quality-controlled products</figcaption>
+                    <img src="images/Batterisolarpt.jpg" alt="Quality-controlled solar battery system installed by the team" data-i18n-alt="project4Alt">
+                    <figcaption data-i18n="project4Caption">Quality-controlled products</figcaption>
                 </figure>
             </div>
         </section>
@@ -1610,23 +1666,23 @@
             <div class="solar-section">
                 <div class="solar-process__header">
                     <div>
-                        <p class="eyebrow">Our approach</p>
-                        <h2>A clear path to solar installation.</h2>
+                        <p class="eyebrow" data-i18n="approachEyebrow">Our approach</p>
+                        <h2 data-i18n="approachTitle">A clear path to solar installation.</h2>
                     </div>
-                    <p>We keep every Hua Hin solar installation straightforward, so you know what to expect before work begins.</p>
+                    <p data-i18n="approachCopy">We keep every Hua Hin solar installation straightforward, so you know what to expect before work begins.</p>
                 </div>
                 <div class="steps">
                     <article class="step">
-                        <h3>Initial conversation</h3>
-                        <p>We discuss your property, energy needs and the goals you have for your home.</p>
+                        <h3 data-i18n="step1Title">Initial conversation</h3>
+                        <p data-i18n="step1Copy">We discuss your property, energy needs and the goals you have for your home.</p>
                     </article>
                     <article class="step">
-                        <h3>System planning</h3>
-                        <p>Our local team reviews the site and recommends a solar panel system designed around your requirements.</p>
+                        <h3 data-i18n="step2Title">System planning</h3>
+                        <p data-i18n="step2Copy">Our local team reviews the site and recommends a solar panel system designed around your requirements.</p>
                     </article>
                     <article class="step">
-                        <h3>Installation &amp; handover</h3>
-                        <p>Once your solar panels are installed, we explain the system clearly so you can feel at home with your new energy setup.</p>
+                        <h3 data-i18n="step3Title">Installation &amp; handover</h3>
+                        <p data-i18n="step3Copy">Once your solar panels are installed, we explain the system clearly so you can feel at home with your new energy setup.</p>
                     </article>
                 </div>
             </div>
@@ -1634,34 +1690,34 @@
 
         <section id="team" class="solar-section engineer-section" aria-labelledby="team-title">
             <div>
-                <p class="eyebrow">Meet the team</p>
-                <h2 id="team-title">A team you can count on.</h2>
+                <p class="eyebrow" data-i18n="teamEyebrow">Meet the team</p>
+                <h2 id="team-title" data-i18n="teamTitle">A team you can count on.</h2>
                 <div class="solar-copy team-copy">
-                    <p>From thoughtful planning to a precise installation, our friendly team takes pride in work that is clear, careful and built to last.</p>
-                    <p>We are here to make the move to solar feel simple, personal and positive from the first conversation.</p>
-                    <p>Our multilingual team communicates fluently in Thai, English, French and Swedish, so your questions, ideas and needs are understood clearly from the start.</p>
+                    <p data-i18n="teamCopy1">From thoughtful planning to a precise installation, our friendly team takes pride in work that is clear, careful and built to last.</p>
+                    <p data-i18n="teamCopy2">We are here to make the move to solar feel simple, personal and positive from the first conversation.</p>
+                    <p data-i18n="teamCopy3">Our multilingual team communicates fluently in Thai, English, French and Swedish, so your questions, ideas and needs are understood clearly from the start.</p>
                 </div>
             </div>
             <figure class="team-image">
-                <img src="images/Team.JPG" alt="The Sombuns Solar installation team in front of a completed home solar project">
+                <img src="images/Team.JPG" alt="The Sombuns Solar installation team in front of a completed home solar project" data-i18n-alt="teamImage">
             </figure>
-            <div class="language-bar" aria-label="Languages we speak">
-                <span class="language-bar__label">We speak</span>
-                <span class="language-badge"><span aria-hidden="true">🇹🇭</span> Thai</span>
-                <span class="language-badge"><span aria-hidden="true">🇬🇧</span> English</span>
-                <span class="language-badge"><span aria-hidden="true">🇫🇷</span> French</span>
-                <span class="language-badge"><span aria-hidden="true">🇸🇪</span> Swedish</span>
+            <div class="language-bar" aria-label="Languages we speak" data-i18n-aria-label="spokenLanguagesAria">
+                <span class="language-bar__label" data-i18n="weSpeak">We speak</span>
+                <span class="language-badge"><span aria-hidden="true">🇹🇭</span> <span data-i18n="thai">Thai</span></span>
+                <span class="language-badge"><span aria-hidden="true">🇬🇧</span> <span data-i18n="english">English</span></span>
+                <span class="language-badge"><span aria-hidden="true">🇫🇷</span> <span data-i18n="french">French</span></span>
+                <span class="language-badge"><span aria-hidden="true">🇸🇪</span> <span data-i18n="swedish">Swedish</span></span>
             </div>
             <div id="expert-insight" class="engineer-interview">
                 <div class="engineer-interview__copy">
-                    <p class="eyebrow">Expert insight</p>
-                    <h2>A conversation with our CEO.</h2>
-                    <p>Coming soon: practical advice on choosing a solar system, planning an installation and getting the most from your energy.</p>
+                    <p class="eyebrow" data-i18n="insightEyebrow">Expert insight</p>
+                    <h2 data-i18n="insightTitle">A conversation with our CEO.</h2>
+                    <p data-i18n="insightCopy">Coming soon: practical advice on choosing a solar system, planning an installation and getting the most from your energy.</p>
                 </div>
-                <div class="engineer-interview__video" role="img" aria-label="Space reserved for an interview video with the Chief Engineer">
+                <div class="engineer-interview__video" role="img" aria-label="Space reserved for an interview video with the Chief Engineer" data-i18n-aria-label="interviewAria">
                     <div>
                         <span class="play-mark" aria-hidden="true">▶</span>
-                        <p>CEO interview — coming soon</p>
+                        <p data-i18n="interviewComingSoon">CEO interview — coming soon</p>
                     </div>
                 </div>
             </div>
@@ -1669,40 +1725,216 @@
 
         <section id="contact" class="solar-contact" aria-labelledby="solar-contact-title">
             <div>
-                <p class="eyebrow">Start a conversation</p>
-                <h2 id="solar-contact-title">Ready to explore solar for your home?</h2>
-                <p>Get in touch to discuss your property and the possibilities for a tailored solar energy solution.</p>
+                <p class="eyebrow" data-i18n="contactEyebrow">Start a conversation</p>
+                <h2 id="solar-contact-title" data-i18n="contactTitle">Ready to explore solar for your home?</h2>
+                <p data-i18n="contactCopy">Get in touch to discuss your property and the possibilities for a tailored solar energy solution.</p>
                 <div class="contact-details">
                     <a class="contact-detail" href="tel:+66631127796">
-                        <span class="contact-detail__label">Phone</span>
+                        <span class="contact-detail__label" data-i18n="phone">Phone</span>
                         +66 63 112 7796
                     </a>
                     <a class="contact-detail" href="mailto:sombunsap.official@gmail.com">
-                        <span class="contact-detail__label">Mail</span>
+                        <span class="contact-detail__label" data-i18n="mail">Mail</span>
                         sombunsap.official@gmail.com
                     </a>
                     <a class="contact-detail" href="https://www.facebook.com/profile.php?id=61573832666420" target="_blank" rel="noopener noreferrer">
-                        <span class="contact-detail__label">Facebook</span>
+                        <span class="contact-detail__label" data-i18n="facebook">Facebook</span>
                         SBSolar HuaHin
                     </a>
                     <div class="contact-detail">
-                        <span class="contact-detail__label">New customer consultations</span>
-                        <span>Monday–Thursday, 08:00–17:00<br>Friday, 08:00–14:30</span>
+                        <span class="contact-detail__label" data-i18n="newCustomerConsultations">New customer consultations</span>
+                        <span data-i18n-html="newCustomerHours">Monday–Thursday, 08:00–17:00<br>Friday, 08:00–14:30</span>
                     </div>
                     <div class="contact-detail">
-                        <span class="contact-detail__label">Existing customer support</span>
-                        <span>Available 24/7</span>
+                        <span class="contact-detail__label" data-i18n="existingCustomerSupport">Existing customer support</span>
+                        <span data-i18n="available247">Available 24/7</span>
                     </div>
                 </div>
             </div>
-            <a class="button" href="mailto:sombunsap.official@gmail.com">Contact us</a>
+            <a class="button" href="mailto:sombunsap.official@gmail.com" data-i18n="contactUs">Contact us</a>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Sombuns AB. All rights reserved.</p>
+        <p data-i18n="copyright">© 2026 Sombuns AB. All rights reserved.</p>
     </footer>
     <script>
+        const thaiTranslations = {
+            languageSwitcher: "เลือกภาษา",
+            menu: "เมนู",
+            navHome: "หน้าแรก",
+            navWhySolar: "ทำไมต้องโซลาร์เซลล์?",
+            navApproach: "ขั้นตอนการทำงาน",
+            navTeam: "ทีมของเรา",
+            navInsight: "ความรู้จากผู้เชี่ยวชาญ",
+            navDemo: "ทดลองระบบโซลาร์",
+            topContact: "กำลังคิดติดโซลาร์เซลล์ให้บ้านของคุณอยู่ใช่ไหม? ติดต่อเราได้เลย",
+            facebookVisit: "เยี่ยมชม SBS Solar บน Facebook",
+            contactUs: "ติดต่อเรา",
+            heroImage: "แผงโซลาร์เซลล์บนหลังคาในหัวหิน",
+            heroEyebrow: "พลังงานแสงอาทิตย์สำหรับบ้านในหัวหิน",
+            heroTitle: "โซลาร์เซลล์สำหรับบ้านในหัวหิน",
+            heroCopy: "SBS Solar ออกแบบและติดตั้งระบบโซลาร์เซลล์ที่เหมาะกับบ้านของคุณในหัวหิน สำหรับผู้ที่ต้องการใช้พลังงานสะอาดและใช้แสงแดดของประเทศไทยให้คุ้มค่ายิ่งขึ้น",
+            introEyebrow: "การลงทุนที่คุ้มค่า",
+            introTitle: "พลังงานที่ทำงานร่วมกับบ้านของคุณ",
+            introCopy1: "สำหรับบ้านในหัวหิน แผงโซลาร์เซลล์เปลี่ยนแสงอาทิตย์เป็นพลังงานไฟฟ้าสำหรับการใช้ชีวิตประจำวัน ระบบที่วางแผนอย่างดีช่วยให้บ้านของคุณใช้พลังงานที่ผลิตได้เองมากขึ้น และพึ่งพาไฟฟ้าจากระบบหลักน้อยลง",
+            introCopy2: "SBS Solar ช่วยให้คุณเข้าใจตัวเลือก ประเมินพื้นที่ และวางแผนระบบโซลาร์เซลล์สำหรับบ้านอย่างรอบคอบ ตั้งแต่การพูดคุยครั้งแรกจนถึงการติดตั้ง",
+            experienceYears: "ประสบการณ์ในหัวหินกว่า 12 ปี",
+            warranty: "รับประกันสินค้าและงานติดตั้ง 10 ปี",
+            installations: "ติดตั้งระบบโซลาร์เซลล์ในหัวหินแล้วกว่า 100 ระบบ",
+            vision: "วิสัยทัศน์ของเรา: ความสบายใจอย่างเต็มที่สำหรับลูกค้าทุกคน",
+            benefitsAria: "ประโยชน์ของพลังงานแสงอาทิตย์",
+            benefit1Title: "ใช้พลังงานที่ผลิตได้เองมากขึ้น",
+            benefit1Copy: "ผลิตไฟฟ้าใช้เองที่บ้านในช่วงกลางวัน ขณะที่แผงโซลาร์เซลล์กำลังผลิตพลังงาน",
+            benefit2Title: "เลือกใช้พลังงานสะอาดทุกวัน",
+            benefit2Copy: "เปลี่ยนแสงแดดอันอุดมสมบูรณ์ของประเทศไทยเป็นพลังงานหมุนเวียน และทำให้การใช้พลังงานในแต่ละวันยั่งยืนยิ่งขึ้น",
+            benefit3Title: "ช่วยลดผลกระทบจากค่าไฟที่เพิ่มขึ้น",
+            benefit3Copy: "เมื่อผลิตไฟฟ้าใช้เองได้บางส่วน คุณจะพึ่งพาการปรับขึ้นของค่าไฟในอนาคตน้อยลง",
+            projectsEyebrow: "ผลงานล่าสุด",
+            projectsTitle: "ติดตั้งอย่างใส่ใจในทุกรายละเอียด",
+            projectsCopy: "ผลงานติดตั้งโซลาร์เซลล์จริงโดยทีมงานหัวหินของเรา ตั้งแต่แผงบนหลังคาจนถึงระบบที่ช่วยให้บ้านของคุณมีพลังงานใช้อย่างมั่นใจ",
+            project1Alt: "แผงโซลาร์เซลล์ที่ติดตั้งบนหลังคาอาคารพาณิชย์",
+            project1Caption: "ระบบสำหรับหลังคาอาคารพาณิชย์",
+            project2Alt: "การติดตั้งแผงโซลาร์เซลล์บนบ้านในหัวหิน",
+            project2Caption: "งานติดตั้งสำหรับที่อยู่อาศัย",
+            project3Alt: "ช่างเทคนิคกำลังตั้งค่าระบบแบตเตอรี่โซลาร์เซลล์",
+            project3Caption: "การทดสอบและส่งมอบระบบ",
+            project4Alt: "ระบบแบตเตอรี่โซลาร์เซลล์ที่ผ่านการควบคุมคุณภาพและติดตั้งโดยทีมงาน",
+            project4Caption: "ผลิตภัณฑ์ที่ผ่านการควบคุมคุณภาพ",
+            approachEyebrow: "ขั้นตอนการทำงานของเรา",
+            approachTitle: "เส้นทางที่ชัดเจนสู่การติดตั้งโซลาร์เซลล์",
+            approachCopy: "เราทำให้การติดตั้งโซลาร์เซลล์ทุกโครงการในหัวหินเป็นเรื่องตรงไปตรงมา เพื่อให้คุณทราบสิ่งที่จะเกิดขึ้นก่อนเริ่มงาน",
+            step1Title: "พูดคุยเบื้องต้น",
+            step1Copy: "เราพูดคุยเกี่ยวกับบ้านของคุณ ความต้องการใช้พลังงาน และเป้าหมายที่คุณมีสำหรับบ้าน",
+            step2Title: "วางแผนระบบ",
+            step2Copy: "ทีมงานในพื้นที่ของเราจะสำรวจหน้างานและแนะนำระบบโซลาร์เซลล์ที่ออกแบบตามความต้องการของคุณ",
+            step3Title: "ติดตั้งและส่งมอบงาน",
+            step3Copy: "เมื่อติดตั้งแผงโซลาร์เซลล์เรียบร้อย เราจะอธิบายการใช้งานระบบอย่างชัดเจน เพื่อให้คุณใช้งานระบบพลังงานใหม่ได้อย่างมั่นใจ",
+            teamEyebrow: "พบกับทีมงาน",
+            teamTitle: "ทีมที่คุณวางใจได้",
+            teamCopy1: "ตั้งแต่การวางแผนอย่างรอบคอบจนถึงการติดตั้งที่แม่นยำ ทีมงานที่เป็นมิตรของเราภูมิใจในงานที่ชัดเจน พิถีพิถัน และทนทาน",
+            teamCopy2: "เราพร้อมทำให้การเปลี่ยนมาใช้โซลาร์เซลล์เป็นเรื่องง่าย เป็นกันเอง และน่าประทับใจตั้งแต่การพูดคุยครั้งแรก",
+            teamCopy3: "ทีมงานของเราสื่อสารได้อย่างคล่องแคล่วทั้งภาษาไทย อังกฤษ ฝรั่งเศส และสวีเดน เพื่อให้เราเข้าใจคำถาม ความคิด และความต้องการของคุณอย่างชัดเจนตั้งแต่เริ่มต้น",
+            teamImage: "ทีมติดตั้ง Sombuns Solar หน้างานโครงการโซลาร์เซลล์สำหรับบ้านที่เสร็จสมบูรณ์",
+            spokenLanguagesAria: "ภาษาที่เราสื่อสารได้",
+            weSpeak: "เราสื่อสารได้",
+            thai: "ไทย",
+            english: "อังกฤษ",
+            french: "ฝรั่งเศส",
+            swedish: "สวีเดน",
+            insightEyebrow: "ความรู้จากผู้เชี่ยวชาญ",
+            insightTitle: "พูดคุยกับ CEO ของเรา",
+            insightCopy: "เร็ว ๆ นี้: คำแนะนำที่นำไปใช้ได้จริงสำหรับการเลือกระบบโซลาร์เซลล์ การวางแผนติดตั้ง และการใช้พลังงานของคุณให้คุ้มค่าที่สุด",
+            interviewAria: "พื้นที่สำหรับวิดีโอสัมภาษณ์หัวหน้าวิศวกร",
+            interviewComingSoon: "บทสัมภาษณ์ CEO — เร็ว ๆ นี้",
+            contactEyebrow: "เริ่มต้นการพูดคุย",
+            contactTitle: "พร้อมค้นหาโซลูชันโซลาร์เซลล์สำหรับบ้านของคุณแล้วหรือยัง?",
+            contactCopy: "ติดต่อเราเพื่อพูดคุยเกี่ยวกับบ้านของคุณ และความเป็นไปได้ของโซลูชันพลังงานแสงอาทิตย์ที่ออกแบบให้เหมาะกับคุณ",
+            phone: "โทรศัพท์",
+            mail: "อีเมล",
+            facebook: "Facebook",
+            newCustomerConsultations: "เวลาปรึกษาสำหรับลูกค้าใหม่",
+            newCustomerHours: "จันทร์–พฤหัสบดี 08:00–17:00<br>ศุกร์ 08:00–14:30",
+            existingCustomerSupport: "บริการช่วยเหลือลูกค้าปัจจุบัน",
+            available247: "ให้บริการตลอด 24 ชั่วโมง",
+            copyright: "© 2026 Sombuns AB สงวนลิขสิทธิ์"
+        };
+
+        const setLanguage = (language, updateUrl = false) => {
+            const isThai = language === "th";
+            document.documentElement.lang = isThai ? "th" : "en";
+            document.title = isThai ? "รับติดตั้งโซลาร์เซลล์ที่เชื่อถือได้ในหัวหิน | SBS Solar" : "Reliable Solar Panel Installation in Hua Hin | SBS Solar";
+            document.querySelector('meta[name="description"]').content = isThai
+                ? "รับติดตั้งโซลาร์เซลล์สำหรับบ้านในหัวหินโดย SBS Solar พร้อมประสบการณ์ในพื้นที่กว่า 12 ปี โทร +66 63 112 7796 เพื่อนัดปรึกษา"
+                : "Reliable solar panel installation for homes in Hua Hin. SBS Solar brings 12 years of local experience. Call +66 63 112 7796 for a consultation.";
+
+            if (isThai) {
+                const localBusinessSchema = document.getElementById("local-business-schema");
+                const websiteSchema = document.getElementById("website-schema");
+                if (localBusinessSchema) {
+                    const businessData = JSON.parse(localBusinessSchema.textContent);
+                    businessData.description = "SBS Solar ออกแบบและติดตั้งระบบโซลาร์เซลล์สำหรับบ้านในหัวหิน ประเทศไทย";
+                    businessData.inLanguage = "th";
+                    businessData.areaServed = {
+                        "@type": "City",
+                        "name": "หัวหิน",
+                        "containedInPlace": { "@type": "Country", "name": "ประเทศไทย" }
+                    };
+                    businessData.serviceType = [
+                        "ติดตั้งแผงโซลาร์เซลล์",
+                        "ติดตั้งแบตเตอรี่โซลาร์เซลล์",
+                        "ติดตั้งอินเวอร์เตอร์โซลาร์เซลล์",
+                        "ระบบพลังงานแสงอาทิตย์สำหรับบ้าน",
+                        "บำรุงรักษาแผงโซลาร์เซลล์",
+                        "บำรุงรักษาระบบโซลาร์เซลล์",
+                        "ให้คำปรึกษาโซลาร์เซลล์และประเมินราคาเบื้องต้น"
+                    ];
+                    localBusinessSchema.textContent = JSON.stringify(businessData);
+                }
+                if (websiteSchema) {
+                    const websiteData = JSON.parse(websiteSchema.textContent);
+                    websiteData.inLanguage = "th";
+                    websiteData.alternateName = "SBS Solar หัวหิน";
+                    websiteSchema.textContent = JSON.stringify(websiteData);
+                }
+                document.querySelectorAll("[data-i18n]").forEach((element) => {
+                    const translation = thaiTranslations[element.dataset.i18n];
+                    if (translation) element.textContent = translation;
+                });
+                document.querySelectorAll("[data-i18n-html]").forEach((element) => {
+                    const translation = thaiTranslations[element.dataset.i18nHtml];
+                    if (translation) element.innerHTML = translation;
+                });
+                document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
+                    const translation = thaiTranslations[element.dataset.i18nAlt];
+                    if (translation) element.alt = translation;
+                });
+                document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
+                    const translation = thaiTranslations[element.dataset.i18nAriaLabel];
+                    if (translation) element.setAttribute("aria-label", translation);
+                });
+            }
+
+            document.querySelectorAll("[data-language]").forEach((button) => {
+                button.setAttribute("aria-pressed", String(button.dataset.language === language));
+            });
+
+            if (updateUrl) {
+                const url = new URL(window.location.href);
+                if (isThai) url.searchParams.set("lang", "th");
+                else url.searchParams.delete("lang");
+                window.history.replaceState({}, "", url);
+            }
+
+            try {
+                window.localStorage.setItem("sbs-language", language);
+            } catch (_) {
+                // Language selection still works if the browser blocks local storage.
+            }
+        };
+
+        const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
+        let savedLanguage = "en";
+        try {
+            savedLanguage = window.localStorage.getItem("sbs-language") || "en";
+        } catch (_) {
+            // Use English when local storage is unavailable.
+        }
+        const currentLanguage = requestedLanguage === "th" || (!requestedLanguage && savedLanguage === "th") ? "th" : "en";
+        setLanguage(currentLanguage);
+
+        document.querySelectorAll("[data-language]").forEach((button) => {
+            button.addEventListener("click", () => {
+                if (button.dataset.language === document.documentElement.lang) return;
+                try {
+                    window.localStorage.setItem("sbs-language", button.dataset.language);
+                } catch (_) {
+                    // The URL still carries the selected language if storage is unavailable.
+                }
+                window.location.href = button.dataset.language === "th" ? "/?lang=th" : "/";
+            });
+        });
+
         const heroImage = document.querySelector(".solar-hero__image");
         const heroSlides = [
             { src: "images/Solarcell.jpg", alt: "Solar panels on a roof in Hua Hin" },
